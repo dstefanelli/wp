@@ -13,47 +13,57 @@ var gulp = require("gulp"),
 	sass = require("gulp-sass"),
 	del = require("del"),
 
-	//Propios
+	gulp.paths = {
+		dist: 'dist/',
+		src: 'src/',
+		vendors: 'dist/vendors/'
+	};
 
-	gulp.task("default", function (callback) {
-		runSequence("clean", "js", "scss", "images");
+var paths = gulp.paths;
+
+gulp.pkg = require('./package.json');
+var pkg = gulp.pkg;
+
+require('require-dir')('./gulp-tasks');
+
+// Static Server + watching scss/html files
+gulp.task('serve', ['sass'], function () {
+
+	browserSync.init({
+		server: ['./', './src']
 	});
 
-gulp.task("default-dev", function (callback) {
-	runSequence("clean", "js", "scss", "images");
+	gulp.watch(paths.src + 'scss/**/*.scss', ['sass']);
+	gulp.watch(paths.src + '**/*.html').on('change', browserSync.reload);
+	gulp.watch(paths.src + 'js/**/*.js').on('change', browserSync.reload);
+
 });
 
-gulp.task("js", function () {
-	var tasks = getBundles(regex.js).map(function (bundle) {
-		return gulp.src(bundle.inputFiles, {
-				base: "."
-			})
-			.pipe(concat(bundle.outputFileName))
-			.pipe(gulp.dest("."))
-			.pipe(babel())
-			.pipe(uglify())
-			.pipe(rename(function (path) {
-				path.extname = ".min.js"
-			}))
-			.pipe(gulp.dest("."));
+gulp.task('serve:dist', function () {
+	browserSync.init({
+		server: ['./dist']
 	});
-	return merge(tasks);
 });
 
-gulp.task("scss", function () {
-	return gulp.src(bundle.inputFiles, {
-			base: "."
-		})
+gulp.task('sass', ['compile-vendors'], function () {
+	return gulp.src(paths.src + '/scss/style.scss')
 		.pipe(sass())
-		.pipe(concat(bundle.outputFileName))
-		.pipe(gulp.dest("."))
+		.pipe(autoprefixer())
+		.pipe(gulp.dest(paths.src + 'css'))
 		.pipe(cssmin())
-		.pipe(rename(function (path) {
-			path.extname = ".min.css"
+		.pipe(rename({
+			suffix: '.min'
 		}))
-		.pipe(gulp.dest("."))
+		.pipe(gulp.dest(paths.src + 'css'))
 		.pipe(browserSync.stream());
 });
+
+gulp.task('sass:watch', function () {
+	gulp.watch(paths.src + 'scss/**/*.scss', ['sass']);
+});
+
+gulp.task('default', ['serve']);
+
 
 gulp.task("clean", function () {
 	return del(["./**/*"]);
@@ -104,97 +114,134 @@ gulp.task('webfonts', function () {
 		.pipe(browserSync.stream());
 });
 
-/*var dllName = "Ats.WebUI.dll";
-var iisPort = 50347;*/
-
-gulp.task('browser-sync', function () {
-	browserSync.init({
-		port: iisPort + 1
-	});
-
-	gulp.watch(["Content/CoreUI/scss/**/*.scss"], ["coreui:scss", "scss"]).on('change', browserSync.reload);
-	gulp.watch(["Content/css/**/*.scss"], ["scss"]).on('change', browserSync.reload);
-	gulp.watch('Content/js/**/*.js', ["js"]).on('change', browserSync.reload);
-	gulp.watch('Content/images/**/*.*', ["images"]).on('change', browserSync.reload);
-	gulp.watch('Content/webfonts/**/*.*', ["webfonts"]).on('change', browserSync.reload);
-	gulp.watch('Content/CoreUI/ats-components.html', ["snippets"]).on('change', browserSync.reload);
-	gulp.watch('Views/**/*.cshtml').on('change', browserSync.reload);
-
-	gulp.watch("bin/" + dllName).on('change', browserSync.reload);
-});
-
-
-//Vendors
-
-/*gulp.task('vendors', ['vendors:css', 'vendors:js', 'vendors:fonts'])
-
-gulp.task('vendors:css', function () {
+gulp.task('copy:vendorsCSS', function () {
 	return gulp.src(vendors.css)
-		.pipe(gulp.dest('wwwroot/vendors/css/'));
+		.pipe(gulp.dest(paths.vendors + 'css/'));
 });
 
-gulp.task('vendors:js', function () {
-	return gulp.src(vendors.js)
-		.pipe(gulp.dest('wwwroot/vendors/js/'));
-});
-
-gulp.task('vendors:fonts', function () {
-	return gulp.src(vendors.fonts)
-		.pipe(gulp.dest('wwwroot/vendors/fonts/'));
-});*/
-
-
-
-
-/*//CoreUI
-
-gulp.task('coreui', ['coreui:scss', 'coreui:js', 'coreui:vendors']);
-
-gulp.task('coreui:scss', function () {
-	return gulp.src('Content/CoreUI/scss/style.scss')
-		.pipe(sass())
-		.pipe(autoprefixer())
-		.pipe(gulp.dest('Content/CoreUI/css'))
+gulp.task('minify:vendorsCSS', function () {
+	return gulp.src([
+		paths.vendors + 'css/*.css',
+		'!' + paths.vendors + 'css/*.min.css'
+	])
 		.pipe(cssmin())
 		.pipe(rename({
 			suffix: '.min'
 		}))
-		.pipe(gulp.dest('Content/CoreUI/css'))
-		.pipe(gulp.dest('wwwroot/CoreUI/css'))
-		.pipe(browserSync.stream());
+		.pipe(gulp.dest(paths.vendors + 'css/'));
 });
 
-gulp.task('coreui:js', function () {
-	return gulp.src(['Content/CoreUI/js/*.js', '!Content/CoreUI/src/js/*.min.js'])
+gulp.task('clean:vendorsCSS', function () {
+	return del([
+		paths.vendors + 'css/*.css',
+		'!' + paths.vendors + 'css/*.min.css'
+	]);
+});
+
+gulp.task('vendors:css', function (callback) {
+	runSequence('copy:vendorsCSS', 'minify:vendorsCSS', 'clean:vendorsCSS', callback);
+});
+
+gulp.task('copy:vendorsJS', function () {
+	return gulp.src(vendors.js)
+		.pipe(gulp.dest(paths.vendors + 'js/'));
+});
+
+gulp.task('minify:vendorsJS', function () {
+	return gulp.src([
+		paths.vendors + 'js/*.js',
+		'!' + paths.vendors + 'js/*.min.js'
+	])
+		.pipe(gulp.dest(paths.vendors + 'js/'))
 		.pipe(uglify())
 		.pipe(rename({
 			suffix: '.min'
 		}))
-		.pipe(gulp.dest('wwwroot/CoreUI/js'))
-		.pipe(browserSync.stream());
+		.pipe(gulp.dest(paths.vendors + 'js/'));
 });
 
-gulp.task('coreui:vendors', function () {
-	return gulp.src('Content/CoreUI/vendors/**')
-		.pipe(gulp.dest('wwwroot/CoreUI/vendors/'))
-		.pipe(browserSync.stream());
+gulp.task('clean:vendorsJS', function () {
+	return del([
+		paths.vendors + 'js/*.js',
+		'!' + paths.vendors + 'js/*.min.js']);
 });
 
-//Snippet html custom components
-
-gulp.task('snippets', function () {
-	return gulp.src('Content/CoreUI/ats-components.html')
-		.pipe(gulp.dest('wwwroot/ui-snippets'))
-		.pipe(browserSync.stream());
+gulp.task('vendors:js', function (callback) {
+	runSequence('copy:vendorsJS', 'minify:vendorsJS', 'clean:vendorsJS', callback);
 });
 
+gulp.task('copy:vendorsFonts', function () {
+	return gulp.src(vendors.fonts)
+		.pipe(gulp.dest(paths.vendors + 'fonts/'));
+});
 
+gulp.task('copy:vendorsFlags', function () {
+	return gulp.src(vendors.flags)
+		.pipe(gulp.dest(paths.vendors + 'flags/'));
+});
 
+gulp.task('replace:node_modules', function () {
+	return gulp.src([
+		paths.dist + '**/*.html',
+		paths.dist + '**/*.js',
+	], {
+			base: './'
+		})
+		.pipe(replace(/node_modules+.+(\/[a-z0-9][^/]*\.js+(\'|\"))/ig, 'vendors/js$1'))
+		.pipe(replace(/"vendors\/js\/(.*).js(\'|\")/ig, '"vendors/js/$1.min.js"'))
+		.pipe(replace(/"..\/..\/vendors\/js\/(.*).js(\'|\")/ig, '"../../vendors/js/$1.min.js"'))
+		.pipe(replace('.min.min.js', '.min.js'))
+		.pipe(replace(/node_modules+.+(\/[a-z0-9][^/]*\.css+(\'|\"))/ig, 'vendors/css$1'))
+		.pipe(replace(/"vendors\/css\/(.*).css(\'|\")/ig, '"vendors/css/$1.min.css"'))
+		.pipe(replace(/"..\/..\/vendors\/css\/(.*).css(\'|\")/ig, '"../../vendors/css/$1.min.css"'))
+		.pipe(replace('.min.min.css', '.min.css'))
+		.pipe(gulp.dest('./'));
+});
 
-//Functions
+gulp.task('vendors', function (callback) {
+	runSequence('vendors:css', 'vendors:js', 'copy:vendorsFonts', 'copy:vendorsFlags', 'replace:node_modules', callback);
+});
 
-function getBundles(regexPattern) {
-	return bundleconfig.filter(function (bundle) {
-		return regexPattern.test(bundle.outputFileName);
-	});
-}*/
+gulp.task('clean:dist', function () {
+	return del(paths.dist);
+});
+
+gulp.task('copy:css', function () {
+	return gulp.src(paths.src + 'css/**/*')
+		.pipe(gulp.dest(paths.dist + 'css'));
+});
+
+gulp.task('copy:img', function () {
+	return gulp.src(paths.src + 'img/**/*')
+		.pipe(gulp.dest(paths.dist + 'img'));
+});
+
+gulp.task('copy:js', function () {
+	return gulp.src(paths.src + 'js/**/*')
+		.pipe(gulp.dest(paths.dist + 'js'));
+});
+
+gulp.task('copy:views', function () {
+	return gulp.src(paths.src + 'views/**/*')
+		.pipe(gulp.dest(paths.dist + 'views'));
+});
+
+gulp.task('copy:html', function () {
+	var framework = pkg.name.split('/')[1];
+	if (framework == 'ajax') {
+		return gulp.src(paths.src + 'index.html')
+			.pipe(gulp.dest(paths.dist));
+	} else {
+		return gulp.src(paths.src + '**/*.html')
+			.pipe(gulp.dest(paths.dist));
+	}
+});
+
+gulp.task('copy:vendors', function () {
+	return gulp.src(paths.src + 'vendors/**/*')
+		.pipe(gulp.dest(paths.dist + 'vendors/'));
+});
+
+gulp.task('build:dist', function (callback) {
+	runSequence('clean:dist', 'copy:css', 'copy:img', 'copy:js', 'copy:views', 'copy:html', 'copy:vendors', 'vendors', callback);
+});
