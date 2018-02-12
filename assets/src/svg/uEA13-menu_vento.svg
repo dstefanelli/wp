@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <title>menu_1</title>
+  <g>
+    <rect width="90.35" height="90.35"/>
+    <rect x="210.82" width="90.35" height="90.35"/>
+    <rect x="421.65" width="90.35" height="90.35"/>
+    <rect y="210.82" width="90.35" height="90.35"/>
+    <rect x="210.82" y="210.82" width="90.35" height="90.35"/>
+    <rect x="421.65" y="210.82" width="90.35" height="90.35"/>
+    <rect y="421.65" width="90.35" height="90.35"/>
+    <rect x="210.82" y="421.65" width="90.35" height="90.35"/>
+    <rect x="421.65" y="421.65" width="90.35" height="90.35"/>
+  </g>
+</svg>

@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <title>arrow_double</title>
+  <path d="M288,0a32,32,0,0,0,0,64H402.7L64,402.8V288a32,32,0,0,0-64,0V512H224a32,32,0,0,0,0-64H109.2L448,109.2V224a32,32,0,0,0,64,0V0Z"/>
+</svg>

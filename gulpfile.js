@@ -1,32 +1,38 @@
-'use strict'
+'use strict';
 
-var gulp = require("gulp"),
+var gulp = require('gulp'),
 	browserSync = require('browser-sync').create(),
-	reload = browserSync.reload(),
-	concat = require("gulp-concat"),
-	cssmin = require("gulp-cssmin"),
-	uglify = require("gulp-uglify"),
-	iconfont = require("gulp-iconfont"),
-	iconfontCss = require("gulp-iconfont-css"),
-	iconfontTemplate = require("gulp-iconfont-template"),
+	reload = browserSync.reload,
+	gulpLoadPlugins = require('gulp-load-plugins'),
+	manifest = require('gulp-manifest'),
+	pug = require('gulp-pug'),
+	sass = require('gulp-sass'),
+	concat = require('gulp-concat'),
+	cssmin = require('gulp-cssmin'),
+	runSequence = require('run-sequence'),
+	iconfont = require('gulp-iconfont'),
+	consolidate = require('gulp-consolidate'),
 	imagemin = require('gulp-imagemin'),
-	rename = require("gulp-rename"),
-	runSequence = require("run-sequence"),
-	sass = require("gulp-sass"),
-	del = require("del");
+	runTimestamp = Math.round(Date.now() / 1000),
+	swPrecache = require('sw-precache'),
+	jeditor = require("gulp-json-editor"),
+	uglify = require('gulp-uglify'),
+	concat = require('gulp-concat'),
+	clean = require('gulp-clean');
 
+var $ = gulpLoadPlugins();
 /*
  	SASS
  */
 
-gulp.task('sass', function (done) {
-	return gulp.src('./assets/scss/**/*.scss')
+gulp.task('sass', function () {
+	return gulp.src('./assets/src/scss/**/*.scss')
 		.pipe(sass({
 			indentType: "tab",
 			indentWidth: "1",
 			outputStyle: "expanded"
 		}).on('error', sass.logError))
-		.pipe(gulp.dest('.assets/css/'))
+		.pipe(gulp.dest('./assets/css/'))
 		.pipe(browserSync.stream());
 });
 
@@ -35,7 +41,7 @@ gulp.task('sass', function (done) {
 */
 gulp.task("images", function () {
 	return gulp.src('./assets/src/images/**/*')
-		.pipe(imagemin([
+		.pipe($.imagemin([
 		imagemin.jpegtran({
 				progressive: true
 			}),
@@ -57,27 +63,27 @@ gulp.task("images", function () {
 /*
 	WEBFONTS
 */
-var fontName = 'icon';
-
-gulp.task('webfonts', function () {
-	return gulp.src('./assets/svg/*.svg')
-		.pipe(iconfontTemplate({
-			fontName: fontName,
-			targetPath: './assets/css/icon.html',
-			fontPath: '../'
-		}))
-		.pipe(iconfontCss({
-			fontName: fontName,
-			targetPath: './assets/css/icon.css',
-			fontPath: '../'
-		}))
+gulp.task('icons', function () {
+	return gulp.src('./assets/src/svg/*.svg')
 		.pipe(iconfont({
-			fontName: fontName,
-			formats: ['svg', 'ttf', 'eot', 'woff', 'woff2'],
+			fontName: 'icons',
+			prependUnicode: true,
 			normalize: true,
-			fontHeight: 1001
+			fontHeight: 1001,
+			formats: ['woff', 'woff2', 'ttf'],
+			timestamp: runTimestamp,
 		}))
-		.pipe(gulp.dest('./assets/webfonts'))
+		.on('glyphs', function (glyphs, options) {
+			gulp.src('./assets/src/svg/icons.scss')
+				.pipe(consolidate('lodash', {
+					glyphs: glyphs,
+					fontName: 'icons',
+					fontPath: '../fonts/',
+					className: 'icon'
+				}))
+				.pipe(gulp.dest('./assets/src/scss/'));
+		})
+		.pipe(gulp.dest('./assets/fonts/'))
 		.pipe(browserSync.stream());
 });
 
@@ -91,10 +97,18 @@ gulp.task('scripts', function () {
 });
 
 /*
+	COPY FONTS
+*/
+/*gulp.task( 'fonts', function(){
+	return gulp.src('./src/resources/fonts/*.*')
+		.pipe( gulp.dest('./dist/resources/fonts/') )
+		.pipe( browserSync.stream() );
+});*/
+/*
  	BORRAR CARPETAS
  */
 gulp.task('clean', function () {
-	return gulp.src(['./assets/**', '!./asssets/src', '!/assets/lib', '!./assets'], {
+	return gulp.src(['./assets/css/', './assets/js', '.assets/webfonts/'], {
 			read: false
 		})
 		.pipe(clean())
@@ -113,12 +127,11 @@ gulp.task('browsersync', function () {
 
 	});
 	//Generamos el watch
-	gulp.watch('./assets/src/sass/**/*.scss', ['sass']);
-	gulp.watch('./assets/src/sprites/*.svg', ['webfonts']);
-	gulp.watch('./assets/src/images/**/*.*', ['images']);
+	gulp.watch('./assets/src/scss/**/*.scss', ['sass']);
+	gulp.watch('./assets/src/svg/*.svg', ['icons', 'sass']);
 	gulp.watch('./assets/src/scripts/**/*.*', ['scripts']);
 });
 
 gulp.task('default', function () {
-	runSequence('webfonts', 'images', 'sass', 'scripts', 'browsersync');
+	runSequence('icons', 'sass', 'scripts', 'browsersync');
 });

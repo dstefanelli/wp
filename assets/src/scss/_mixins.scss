@@ -1,0 +1,90 @@
+@mixin box-sizing( $sizing:"border-box") {
+	box-sizing: #{$sizing};
+	-webkit-box-sizing: #{$sizing};
+}
+@mixin placeholder {
+	&::-webkit-input-placeholder {
+		@content
+	}
+	&:-moz-placeholder {
+		@content
+	}
+	&::-moz-placeholder {
+		@content
+	}
+	&:-ms-input-placeholder {
+		@content
+	}
+}
+@mixin animation( $arguments...) {
+	animation: $arguments;
+	-ms-animation: $arguments;
+	-moz-animation: $arguments;
+	-webkit-animation: $arguments;
+}
+@mixin animation-delay( $arguments...) {
+	animation-delay: $arguments;
+	-ms-animation-delay: $arguments;
+	-moz-animation-delay: $arguments;
+	-webkit-animation-delay: $arguments;
+}
+@mixin transition( $arguments...) {
+	transition: $arguments;
+	-webkit-transition: $arguments;
+}
+@mixin transition-delay( $arguments) {
+	transition-delay: $arguments;
+	-webkit-transition-delay: $arguments;
+}
+@mixin transform( $arguments) {
+	transform: $arguments;
+	-webkit-transform: $arguments;
+}
+@mixin transform-origin( $arguments) {
+	transform-origin: $arguments;
+	-webkit-transform-origin: $arguments;
+}
+@mixin box-shadow( $arguments) {
+	box-shadow: $arguments;
+	-webkit-box-shadow: $arguments;
+}
+@mixin drop-shadow( $arguments) {
+	filter: drop-shadow( $arguments);
+	-ms-filter: drop-shadow( $arguments);
+	-moz-filter: drop-shadow( $arguments);
+	-webkit-filter: drop-shadow( $arguments);
+}
+@mixin linear-gradient($fromColor, $toColor) {
+	background-image: -webkit-gradient(linear, left top, left bottom, from($fromColor), to($toColor));
+	background-image: -webkit-linear-gradient(top, $fromColor, $toColor);
+	background-image: -moz-linear-gradient(top, $fromColor, $toColor);
+	background-image: -ms-linear-gradient(top, $fromColor, $toColor);
+	background-image: -o-linear-gradient(top, $fromColor, $toColor);
+	background-image: linear-gradient(top, $fromColor, $toColor);
+}
+@mixin flexbox ( $orient:"horizontal", $type:"box") {
+	display: -webkit-#{$type};
+	display: -moz-#{$type};
+	display: -ms-#{$type};
+	display: -o-#{$type};
+	display: #{$type};
+	-webkit-box-orient: #{$orient};
+	-moz-box-orient: #{$orient};
+	-ms-box-orient: #{$orient};
+	-o-box-orient: #{$orient};
+	box-orient: #{$orient};
+}
+@mixin flexbox-ordinal ( $group) {
+	-webkit-box-ordinal-group: $group;
+	-moz-box-ordinal-group: $group;
+	-ms-box-ordinal-group: $group;
+	-o-box-ordinal-group: $group;
+	box-ordinal-group: $group;
+}
+@mixin flexbox-shrink ( $group) {
+	-webkit-flex-shrink: $group;
+	-moz-flex-shrink: $group;
+	-ms-flex-shrink: $group;
+	-o-flex-shrink: $group;
+	flex-shrink: $group;
+}
