@@ -53,13 +53,15 @@
 	<!-- Main stylesheet and color file-->
 	<link href="assets/css/style.css" rel="stylesheet">
 	<link id="color-scheme" href="assets/css/colors/default.css" rel="stylesheet">
+
+	<?php wp_head(); ?>
 </head>
 
 <body data-spy="scroll" data-target=".onpage-navigation" data-offset="60">
 	<main>
-		<div class="page-loader">
-			<div class="loader">Loading...</div>
-		</div>
+		<!--<div class="page-loader">
+	<div class="loader">Loading...</div>
+</div>-->
 		<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
 			<div class="container">
 				<div class="navbar-header">
