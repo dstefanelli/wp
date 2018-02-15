@@ -152,8 +152,8 @@ Stylesheets
 <link href="assets/lib/components-font-awesome/css/font-awesome.min.css" rel="stylesheet">
 <link href="assets/lib/et-line-font/et-line-font.css" rel="stylesheet">
 <link href="assets/lib/flexslider/flexslider.css" rel="stylesheet">
-		<link href="assets/lib/owl.carousel/dist/assets/owl.carousel.min.css" rel="stylesheet">
-		<link href="assets/lib/owl.carousel/dist/assets/owl.theme.default.min.css" rel="stylesheet">
+<link href="assets/lib/owl.carousel/dist/assets/owl.carousel.min.css" rel="stylesheet">
+<link href="assets/lib/owl.carousel/dist/assets/owl.theme.default.min.css" rel="stylesheet">
 <link href="assets/lib/magnific-popup/dist/magnific-popup.css" rel="stylesheet">
 <link href="assets/lib/simple-text-rotator/simpletextrotator.css" rel="stylesheet">
 <!-- Main stylesheet and color file-->
@@ -165,17 +165,18 @@ JavaScripts
 -->
 <script src="assets/lib/jquery/dist/jquery.js"></script>
 <script src="assets/lib/bootstrap/dist/js/bootstrap.min.js"></script>
-	<script src="assets/lib/wow/dist/wow.js"></script>
-	<script src="assets/lib/jquery.mb.ytplayer/dist/jquery.mb.YTPlayer.js"></script>
-	<script src="assets/lib/isotope/dist/isotope.pkgd.js"></script>
-	<script src="assets/lib/imagesloaded/imagesloaded.pkgd.js"></script>
-	<script src="assets/lib/flexslider/jquery.flexslider.js"></script>
-	<script src="assets/lib/owl.carousel/dist/owl.carousel.min.js"></script>
-	<script src="assets/lib/smoothscroll.js"></script>
-	<script src="assets/lib/magnific-popup/dist/jquery.magnific-popup.js"></script>
-	<script src="assets/lib/simple-text-rotator/jquery.simple-text-rotator.min.js"></script>
-	<script src="assets/js/plugins.js"></script>
-	<script src="assets/js/main.js"></script>
+<script src="assets/lib/wow/dist/wow.js"></script>
+<script src="assets/lib/jquery.mb.ytplayer/dist/jquery.mb.YTPlayer.js"></script>
+<script src="assets/lib/isotope/dist/isotope.pkgd.js"></script>
+<script src="assets/lib/imagesloaded/imagesloaded.pkgd.js"></script>
+<script src="assets/lib/flexslider/jquery.flexslider.js"></script>
+<script src="assets/lib/owl.carousel/dist/owl.carousel.min.js"></script>
+<script src="assets/lib/smoothscroll.js"></script>
+<script src="assets/lib/magnific-popup/dist/jquery.magnific-popup.js"></script>
+<script src="assets/lib/simple-text-rotator/jquery.simple-text-rotator.min.js"></script>
+<script async="" defer="" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDK2Axt8xiFYMBMDwwG1XzBQvEbYpzCvFU"></script>
+<script src="assets/js/plugins.js"></script>
+<script src="assets/js/main.js"></script>
 		*/
 
 function wedding_style_script() {
@@ -185,13 +186,26 @@ function wedding_style_script() {
 	wp_enqueue_style('bootstrap', get_template_directory_uri().'/assets/lib/bootstrap/dist/css/bootstrap.css', array(), null);
 	wp_enqueue_style('animate', get_template_directory_uri().'/assets/lib/animate.css/animate.css', array(),null);
 	wp_enqueue_style('flexislider', get_template_directory_uri().'/assets/lib/flexslider/flexslider.css', array(),null);
+	wp_enqueue_style('owl-carousel', get_template_directory_uri().'/assets/lib/owl.carousel/dist/assets/owl.carousel.min.css', array(),null);
+	wp_enqueue_style('owl-theme', get_template_directory_uri().'/assets/lib/owl.carousel/dist/assets/owl.theme.default.min.css', array(),null);
 	wp_enqueue_style('magnific-popup', get_template_directory_uri().'/assets/lib/magnific-popup/dist/magnific-popup.css', array(),null);
 	wp_enqueue_style('simpletextrotator', get_template_directory_uri().'/assets/lib/magnific-popup/dist/magnific-popup.css', array(),null);
 	wp_enqueue_style('text', get_template_directory_uri().'/assets/lib/simple-text-rotator/simpletextrotator.css', array(),null);
 	
 	//Scripts
-	wp_enqueue_script( 'jquery', get_theme_file_uri( '/assets/lib/jquery/dist/jquery.js' ), array(), '3.1.1', true );
+	//wp_enqueue_script( 'jquery', get_theme_file_uri( '/assets/lib/jquery/dist/jquery.js' ), array(), '', true );
 	wp_enqueue_script( 'bootstrap', get_theme_file_uri( '/assets/lib/bootstrap/dist/js/bootstrap.min.js' ), array( 'jquery' ), '3.3.7', true );
+	wp_enqueue_script( 'wow', get_theme_file_uri( '/assets/lib/wow/dist/wow.js' ), array( 'jquery' ), '1.0.0', true );
+	wp_enqueue_script( 'YTPlayer', get_theme_file_uri( '/assets/lib/jquery.mb.ytplayer/dist/jquery.mb.YTPlayer.js' ), array( 'jquery' ), '1.0.0', true );
+	wp_enqueue_script( 'isotope', get_theme_file_uri( '/assets/lib/isotope/dist/isotope.pkgd.js' ), array( 'jquery' ), '3.0.2', true );
+	wp_enqueue_script( 'imagesloaded', get_theme_file_uri( '/assets/lib/imagesloaded/imagesloaded.pkgd.js' ), array( 'jquery' ), '4.1.1', true );
+	wp_enqueue_script( 'flexslider', get_theme_file_uri( '/assets/lib/flexslider/jquery.flexslider.js' ), array( 'jquery' ), '4.1.1', true );
+	wp_enqueue_script( 'owl-carousel', get_theme_file_uri( '/assets/lib/owl.carousel/dist/owl.carousel.min.js' ), array( 'jquery' ), '2.2.1', true );
+	wp_enqueue_script( 'smoothscroll', get_theme_file_uri( '/assets/lib/smoothscroll.js' ), array( 'jquery' ), '0.9.9', true );
+	wp_enqueue_script( 'magnific-popup', get_theme_file_uri( '/assets/lib/magnific-popup/dist/jquery.magnific-popup.js' ), array( 'jquery' ), '1.1.0', true );
+	wp_enqueue_script( 'magnific-popup', get_theme_file_uri( '/assets/lib/simple-text-rotator/jquery.simple-text-rotator.min.js' ), array( 'jquery' ), '1.1.0', true );
+	wp_enqueue_script( 'plugins', get_theme_file_uri( '/assets/js/plugins.js' ), array( 'jquery' ), '1.1.0', true );
+	wp_enqueue_script( 'main', get_theme_file_uri( '/assets/js/main.js' ), array( 'jquery' ), '1.1.0', true );
 }
 add_action('wp_enqueue_scripts', 'wedding_style_script');
 ?>

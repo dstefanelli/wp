@@ -142,12 +142,12 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
          * Rotate
          /* ---------------------------------------------- */
 
-        $(".rotate").textrotator({
+        /*$(".rotate").textrotator({
             animation: "dissolve",
             separator: "|",
             speed: 3000
         });
-
+*/
 
         /* ---------------------------------------------- /*
          * Transparent navbar animation
