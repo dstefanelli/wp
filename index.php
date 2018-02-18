@@ -17,14 +17,20 @@
 
 get_header(); ?>
 
-<section class="home-section home-full-height bg-dark bg-gradient" id="home" data-background="assets/images/section-10.jpg">
-	<div class="titan-caption">
-		<div class="caption-content">
-			<div class="font-alt mb-30 titan-title-size-1">Hello &amp; welcome</div>
-			<div class="font-alt mb-40 titan-title-size-4">We are Titan</div><a class="section-scroll btn btn-border-w btn-round" href="#">Learn More</a>
-		</div>
-	</div>
-</section>
+<?php 
+$arg = array(
+	'cat' => '11',
+	'tag_id' => '14');
+$query = new WP_Query($arg);
+
+if ( $query-> has_post_thumbnail() ) {
+	the_post_thumbnail('full');
+} // end if
+
+?>
+
+	
+
 <div class="main">
 	<section class="module" id="services">
 		<div class="container">
@@ -35,66 +41,29 @@ get_header(); ?>
 				</div>
 			</div>
 			<div class="row multi-columns-row">
-				<div class="col-md-3 col-sm-6 col-xs-12">
-					<div class="features-item">
-						<div class="features-icon"><span class="icon-lightbulb"></span></div>
-						<h3 class="features-title font-alt">Ideas and concepts</h3>
-						<p>Careful attention to detail and clean, well structured code ensures a smooth user experience for all your visitors.</p>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-6 col-xs-12">
-					<div class="features-item">
-						<div class="features-icon"><span class="icon-bike"></span></div>
-						<h3 class="features-title font-alt">Optimised for speed</h3>
-						<p>Careful attention to detail and clean, well structured code ensures a smooth user experience for all your visitors.</p>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-6 col-xs-12">
-					<div class="features-item">
-						<div class="features-icon"><span class="icon-tools"></span></div>
-						<h3 class="features-title font-alt">Designs &amp; interfaces</h3>
-						<p>Careful attention to detail and clean, well structured code ensures a smooth user experience for all your visitors.</p>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-6 col-xs-12">
-					<div class="features-item">
-						<div class="features-icon"><span class="icon-gears"></span></div>
-						<h3 class="features-title font-alt">Highly customizable</h3>
-						<p>Careful attention to detail and clean, well structured code ensures a smooth user experience for all your visitors.</p>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-6 col-xs-12">
-					<div class="features-item">
-						<div class="features-icon"><span class="icon-tools-2"></span></div>
-						<h3 class="features-title font-alt">Coding &amp; development</h3>
-						<p>Careful attention to detail and clean, well structured code ensures a smooth user experience for all your visitors.</p>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-6 col-xs-12">
-					<div class="features-item">
-						<div class="features-icon"><span class="icon-genius"></span></div>
-						<h3 class="features-title font-alt">Features &amp; plugins</h3>
-						<p>Careful attention to detail and clean, well structured code ensures a smooth user experience for all your visitors.</p>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-6 col-xs-12">
-					<div class="features-item">
-						<div class="features-icon"><span class="icon-mobile"></span></div>
-						<h3 class="features-title font-alt">Responsive design</h3>
-						<p>Careful attention to detail and clean, well structured code ensures a smooth user experience for all your visitors.</p>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-6 col-xs-12">
-					<div class="features-item">
-						<div class="features-icon"><span class="icon-lifesaver"></span></div>
-						<h3 class="features-title font-alt">Dedicated support</h3>
-						<p>Careful attention to detail and clean, well structured code ensures a smooth user experience for all your visitors.</p>
-					</div>
-				</div>
+			
+				<?php 
+					$arg = array(
+						'cat' => '15',
+						'tag_id' => '14');
+					$query = new WP_Query($arg);
+					if ($query-> have_posts() ) {
+						while ($query-> have_posts() ) {
+							$query->the_post(); 
+							echo '<div class="col-md-3 col-sm-6 col-xs-12">
+									<div class="features-item">
+										<div class="features-icon"><span class="icon-lightbulb"></span></div>
+										<h3 class="features-title font-alt">'. get_the_title() .'</h3>';
+							echo '<p>'.get_the_content().'</p>';
+							echo '</div></div>';
+						} // end while
+						wp_reset_postdata();
+					} // end if
+				?>
 			</div>
 		</div>
 	</section>
-	<section class="module bg-dark-60" data-background="assets/images/section-6.jpg">
+	<section class="module bg-dark-60" data-background="wp-content/uploads/2018/02/section-6.jpg">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-12">
@@ -131,37 +100,37 @@ get_header(); ?>
 		</div>
 		<ul class="works-grid works-grid-gut works-grid-3 works-hover-w" id="works-grid">
 			<li class="work-item illustration webdesign"><a href="portfolio-single-1.html">
-				<div class="work-image"><img src="assets/images/work-1.jpg" alt="Portfolio Item"/></div>
+				<div class="work-image"><img src="wp-content/uploads/2018/02/work-1.jpg" alt="Portfolio Item"/></div>
 				<div class="work-caption font-alt">
 					<h3 class="work-title">Corporate Identity</h3>
 					<div class="work-descr">Illustration</div>
 				</div></a></li>
 			<li class="work-item marketing photography"><a href="portfolio-single-1.html">
-				<div class="work-image"><img src="assets/images/work-2.jpg" alt="Portfolio Item"/></div>
+				<div class="work-image"><img src="wp-content/uploads/2018/02/work-2.jpg" alt="Portfolio Item"/></div>
 				<div class="work-caption font-alt">
 					<h3 class="work-title">Bag MockUp</h3>
 					<div class="work-descr">Marketing</div>
 				</div></a></li>
 			<li class="work-item illustration photography"><a href="portfolio-single-1.html">
-				<div class="work-image"><img src="assets/images/work-3.jpg" alt="Portfolio Item"/></div>
+				<div class="work-image"><img src="wp-content/uploads/2018/02/work-3.jpg" alt="Portfolio Item"/></div>
 				<div class="work-caption font-alt">
 					<h3 class="work-title">Disk Cover</h3>
 					<div class="work-descr">Illustration</div>
 				</div></a></li>
 			<li class="work-item marketing photography"><a href="portfolio-single-1.html">
-				<div class="work-image"><img src="assets/images/work-4.jpg" alt="Portfolio Item"/></div>
+				<div class="work-image"><img src="wp-content/uploads/2018/02/work-4.jpg" alt="Portfolio Item"/></div>
 				<div class="work-caption font-alt">
 					<h3 class="work-title">Business Card</h3>
 					<div class="work-descr">Photography</div>
 				</div></a></li>
 			<li class="work-item illustration webdesign"><a href="portfolio-single-1.html">
-				<div class="work-image"><img src="assets/images/work-5.jpg" alt="Portfolio Item"/></div>
+				<div class="work-image"><img src="wp-content/uploads/2018/02/work-5.jpg" alt="Portfolio Item"/></div>
 				<div class="work-caption font-alt">
 					<h3 class="work-title">Business Card</h3>
 					<div class="work-descr">Webdesign</div>
 				</div></a></li>
 			<li class="work-item marketing webdesign"><a href="portfolio-single-1.html">
-				<div class="work-image"><img src="assets/images/work-6.jpg" alt="Portfolio Item"/></div>
+				<div class="work-image"><img src="wp-content/uploads/2018/02/work-6.jpg" alt="Portfolio Item"/></div>
 				<div class="work-caption font-alt">
 					<h3 class="work-title">Business Cards in paper clip</h3>
 					<div class="work-descr">Marketing</div>
@@ -211,7 +180,7 @@ get_header(); ?>
 					</div>
 				</div>
 				<div class="col-md-6 col-lg-6 hidden-xs hidden-sm">
-					<div class="alt-services-image align-center"><img src="assets/images/promo.png" alt="Feature Image"></div>
+					<div class="alt-services-image align-center"><img src="wp-content/uploads/2018/02/promo.png" alt="Feature Image"></div>
 				</div>
 				<div class="col-sm-6 col-md-3 col-lg-3">
 					<div class="alt-features-item">
@@ -246,7 +215,7 @@ get_header(); ?>
 			<div class="row">
 				<div class="mb-sm-20 wow fadeInUp col-sm-6 col-md-3" onclick="wow fadeInUp">
 					<div class="team-item">
-						<div class="team-image"><img src="assets/images/team-1.jpg" alt="Member Photo"/>
+						<div class="team-image"><img src="wp-content/uploads/2018/02/team-1.jpg" alt="Member Photo"/>
 							<div class="team-detail">
 								<h5 class="font-alt">Hi all</h5>
 								<p class="font-serif">Lorem ipsum dolor sit amet, consectetur adipiscing elit lacus, a&amp;nbsp;iaculis diam.</p>
@@ -261,7 +230,7 @@ get_header(); ?>
 				</div>
 				<div class="mb-sm-20 wow fadeInUp col-sm-6 col-md-3" onclick="wow fadeInUp">
 					<div class="team-item">
-						<div class="team-image"><img src="assets/images/team-2.jpg" alt="Member Photo"/>
+						<div class="team-image"><img src="wp-content/uploads/2018/02/team-2.jpg" alt="Member Photo"/>
 							<div class="team-detail">
 								<h5 class="font-alt">Good day</h5>
 								<p class="font-serif">Lorem ipsum dolor sit amet, consectetur adipiscing elit lacus, a&amp;nbsp;iaculis diam.</p>
@@ -276,7 +245,7 @@ get_header(); ?>
 				</div>
 				<div class="mb-sm-20 wow fadeInUp col-sm-6 col-md-3" onclick="wow fadeInUp">
 					<div class="team-item">
-						<div class="team-image"><img src="assets/images/team-3.jpg" alt="Member Photo"/>
+						<div class="team-image"><img src="wp-content/uploads/2018/02/team-3.jpg" alt="Member Photo"/>
 							<div class="team-detail">
 								<h5 class="font-alt">Hello</h5>
 								<p class="font-serif">Lorem ipsum dolor sit amet, consectetur adipiscing elit lacus, a&amp;nbsp;iaculis diam.</p>
@@ -291,7 +260,7 @@ get_header(); ?>
 				</div>
 				<div class="mb-sm-20 wow fadeInUp col-sm-6 col-md-3" onclick="wow fadeInUp">
 					<div class="team-item">
-						<div class="team-image"><img src="assets/images/team-4.jpg" alt="Member Photo"/>
+						<div class="team-image"><img src="wp-content/uploads/2018/02/team-4.jpg" alt="Member Photo"/>
 							<div class="team-detail">
 								<h5 class="font-alt">Yes, it's me</h5>
 								<p class="font-serif">Lorem ipsum dolor sit amet, consectetur adipiscing elit lacus, a&amp;nbsp;iaculis diam.</p>
@@ -307,7 +276,7 @@ get_header(); ?>
 			</div>
 		</div>
 	</section>
-	<section class="module bg-dark-60" data-background="assets/images/section-3.jpg">
+	<section class="module bg-dark-60" data-background="wp-content/uploads/2018/02/section-3.jpg">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-6 col-sm-offset-3">
@@ -425,7 +394,7 @@ get_header(); ?>
 			</div>
 		</div>
 	</section>
-	<section class="module bg-dark-60 pt-0 pb-0 parallax-bg testimonial" data-background="assets/images/testimonial_bg.jpg">
+	<section class="module bg-dark-60 pt-0 pb-0 parallax-bg testimonial" data-background="wp-content/uploads/2018/02/testimonial_bg.jpg">
 		<div class="testimonials-slider pt-140 pb-140">
 			<ul class="slides">
 				<li>
@@ -514,7 +483,7 @@ get_header(); ?>
 			<div class="row multi-columns-row post-columns">
 				<div class="col-sm-6 col-md-4 col-lg-4">
 					<div class="post mb-20">
-						<div class="post-thumbnail"><a href="#"><img src="assets/images/post-1.jpg" alt="Blog-post Thumbnail"/></a></div>
+						<div class="post-thumbnail"><a href="#"><img src="wp-content/uploads/2018/02/post-1.jpg" alt="Blog-post Thumbnail"/></a></div>
 						<div class="post-header font-alt">
 							<h2 class="post-title"><a href="#">Our trip to the Alps</a></h2>
 							<div class="post-meta">By&nbsp;<a href="#">Mark Stone</a>&nbsp;| 23 November | 3 Comments
@@ -528,7 +497,7 @@ get_header(); ?>
 				</div>
 				<div class="col-sm-6 col-md-4 col-lg-4">
 					<div class="post mb-20">
-						<div class="post-thumbnail"><a href="#"><img src="assets/images/post-2.jpg" alt="Blog-post Thumbnail"/></a></div>
+						<div class="post-thumbnail"><a href="#"><img src="wp-content/uploads/2018/02/post-2.jpg" alt="Blog-post Thumbnail"/></a></div>
 						<div class="post-header font-alt">
 							<h2 class="post-title"><a href="#">Shore after the tide</a></h2>
 							<div class="post-meta">By&nbsp;<a href="#">Andy River</a>&nbsp;| 11 November | 4 Comments
@@ -542,7 +511,7 @@ get_header(); ?>
 				</div>
 				<div class="col-sm-6 col-md-4 col-lg-4">
 					<div class="post mb-20">
-						<div class="post-thumbnail"><a href="#"><img src="assets/images/post-3.jpg" alt="Blog-post Thumbnail"/></a></div>
+						<div class="post-thumbnail"><a href="#"><img src="wp-content/uploads/2018/02/post-3.jpg" alt="Blog-post Thumbnail"/></a></div>
 						<div class="post-header font-alt">
 							<h2 class="post-title"><a href="#">We in New Zealand</a></h2>
 							<div class="post-meta">By&nbsp;<a href="#">Dylan Woods</a>&nbsp;| 5 November | 15 Comments
@@ -657,14 +626,14 @@ get_header(); ?>
 						<h5 class="widget-title font-alt">Popular Posts</h5>
 						<ul class="widget-posts">
 							<li class="clearfix">
-								<div class="widget-posts-image"><a href="#"><img src="assets/images/rp-1.jpg" alt="Post Thumbnail"/></a></div>
+								<div class="widget-posts-image"><a href="#"><img src="wp-content/uploads/2018/02/rp-1.jpg" alt="Post Thumbnail"/></a></div>
 								<div class="widget-posts-body">
 									<div class="widget-posts-title"><a href="#">Designer Desk Essentials</a></div>
 									<div class="widget-posts-meta">23 january</div>
 								</div>
 							</li>
 							<li class="clearfix">
-								<div class="widget-posts-image"><a href="#"><img src="assets/images/rp-2.jpg" alt="Post Thumbnail"/></a></div>
+								<div class="widget-posts-image"><a href="#"><img src="wp-content/uploads/2018/02/rp-2.jpg" alt="Post Thumbnail"/></a></div>
 								<div class="widget-posts-body">
 									<div class="widget-posts-title"><a href="#">Realistic Business Card Mockup</a></div>
 									<div class="widget-posts-meta">15 February</div>

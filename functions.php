@@ -193,7 +193,6 @@ function wedding_style_script() {
 	wp_enqueue_style('text', get_template_directory_uri().'/assets/lib/simple-text-rotator/simpletextrotator.css', array(),null);
 	
 	//Scripts
-	//wp_enqueue_script( 'jquery', get_theme_file_uri( '/assets/lib/jquery/dist/jquery.js' ), array(), '', true );
 	wp_enqueue_script( 'bootstrap', get_theme_file_uri( '/assets/lib/bootstrap/dist/js/bootstrap.min.js' ), array( 'jquery' ), '3.3.7', true );
 	wp_enqueue_script( 'wow', get_theme_file_uri( '/assets/lib/wow/dist/wow.js' ), array( 'jquery' ), '1.0.0', true );
 	wp_enqueue_script( 'YTPlayer', get_theme_file_uri( '/assets/lib/jquery.mb.ytplayer/dist/jquery.mb.YTPlayer.js' ), array( 'jquery' ), '1.0.0', true );
@@ -201,9 +200,8 @@ function wedding_style_script() {
 	wp_enqueue_script( 'imagesloaded', get_theme_file_uri( '/assets/lib/imagesloaded/imagesloaded.pkgd.js' ), array( 'jquery' ), '4.1.1', true );
 	wp_enqueue_script( 'flexslider', get_theme_file_uri( '/assets/lib/flexslider/jquery.flexslider.js' ), array( 'jquery' ), '4.1.1', true );
 	wp_enqueue_script( 'owl-carousel', get_theme_file_uri( '/assets/lib/owl.carousel/dist/owl.carousel.min.js' ), array( 'jquery' ), '2.2.1', true );
-	wp_enqueue_script( 'smoothscroll', get_theme_file_uri( '/assets/lib/smoothscroll.js' ), array( 'jquery' ), '0.9.9', true );
 	wp_enqueue_script( 'magnific-popup', get_theme_file_uri( '/assets/lib/magnific-popup/dist/jquery.magnific-popup.js' ), array( 'jquery' ), '1.1.0', true );
-	wp_enqueue_script( 'magnific-popup', get_theme_file_uri( '/assets/lib/simple-text-rotator/jquery.simple-text-rotator.min.js' ), array( 'jquery' ), '1.1.0', true );
+	wp_enqueue_script( 'simple-text-rotator', get_theme_file_uri( '/assets/lib/simple-text-rotator/jquery.simple-text-rotator.min.js' ), array( 'jquery' ), '1.1.0', true );
 	wp_enqueue_script( 'plugins', get_theme_file_uri( '/assets/js/plugins.js' ), array( 'jquery' ), '1.1.0', true );
 	wp_enqueue_script( 'main', get_theme_file_uri( '/assets/js/main.js' ), array( 'jquery' ), '1.1.0', true );
 }
