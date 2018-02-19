@@ -125,13 +125,14 @@ gulp.task('browsersync', function () {
 	//Iniciamos el server
 	browserSync.init({
 		injectChanges: true,
-		proxy: "localhost/wp"
+		proxy: "localhost/tuinvitaciononline"
 
 	});
 	//Generamos el watch
-	gulp.watch('./assets/src/scss/**/*.scss', ['sass']);
-	gulp.watch('./assets/src/svg/*.svg', ['icons', 'sass']);
-	gulp.watch('./assets/src/scripts/**/*.*', ['scripts']);
+	gulp.watch(['./assets/src/scss/**/*.scss'], ['sass']).on('change', browserSync.reload);
+	gulp.watch(['./assets/src/svg/*.svg'], ['icons', 'sass']).on('change', browserSync.reload);
+	gulp.watch(['./assets/src/scripts/**/*.*'], ['scripts']).on('change', browserSync.reload);
+	gulp.watch(['./**/*.html','./**/*.php']).on('change', browserSync.reload);
 });
 
 gulp.task('default', function () {

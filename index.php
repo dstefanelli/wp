@@ -29,7 +29,6 @@ if ( $query-> has_post_thumbnail() ) {
 
 ?>
 
-	
 
 <div class="main">
 	<section class="module" id="services">
