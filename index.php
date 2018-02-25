@@ -17,41 +17,53 @@
 
 get_header(); ?>
 
+
+
 <?php 
-$arg = array(
-	'cat' => '11',
-	'tag_id' => '14');
-$query = new WP_Query($arg);
-
-if ( $query-> has_post_thumbnail() ) {
-	the_post_thumbnail('full');
-} // end if
-
+	$arg = array('category_name' => 'destacada');
+	$destacada = new WP_Query($arg);
+	if ( $destacada-> have_posts() ) {
+		while ( $destacada-> have_posts() ) {
+			$destacada->the_post(); 
+			if( has_post_thumbnail() )
+			{
+				$feat_image_url = wp_get_attachment_url( get_post_thumbnail_id() );
+				echo '<section class="home-section home-full-height bg-dark bg-gradient" id="home"  data-background="'.$feat_image_url.'">';
+				echo '<div class="titan-caption">
+						<div class="caption-content">';
+				echo '<div class="font-alt mb-30 titan-title-size-1">'.get_the_title().'</div>';
+				echo '<div class="font-alt mb-40 titan-title-size-4">'.get_the_content().'</div>
+							<a class="section-scroll btn btn-border-w btn-round" href="#">Ver como</a>
+						</div>
+					</div>
+				</section>';
+			}
+			
+		} // end while
+		wp_reset_postdata();
+	} // end if
 ?>
-
 
 <div class="main">
 	<section class="module" id="services">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-6 col-sm-offset-3">
-					<h2 class="module-title font-alt">Our Services</h2>
+					<h2 class="module-title font-alt">Nuestros Servicios</h2>
 					<div class="module-subtitle font-serif">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</div>
 				</div>
 			</div>
 			<div class="row multi-columns-row">
 			
 				<?php 
-					$arg = array(
-						'cat' => '15',
-						'tag_id' => '14');
+					$arg = array('category_name' => 'servicios', 'showposts' => '8');
 					$query = new WP_Query($arg);
 					if ($query-> have_posts() ) {
 						while ($query-> have_posts() ) {
 							$query->the_post(); 
 							echo '<div class="col-md-3 col-sm-6 col-xs-12">
 									<div class="features-item">
-										<div class="features-icon"><span class="icon-lightbulb"></span></div>
+										<div class="features-icon"><span class=" ion icon-lightbulb"></span></div>
 										<h3 class="features-title font-alt">'. get_the_title() .'</h3>';
 							echo '<p>'.get_the_content().'</p>';
 							echo '</div></div>';
@@ -75,7 +87,7 @@ if ( $query-> has_post_thumbnail() ) {
 			</div>
 		</div>
 	</section>
-	<section class="module pb-0" id="works">
+	<!--<section class="module pb-0" id="works">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-6 col-sm-offset-3">
@@ -150,13 +162,13 @@ if ( $query-> has_post_thumbnail() ) {
 				</div>
 			</div>
 		</div>
-	</section>
+	</section>-->
 	<section class="module" id="alt-features">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-6 col-sm-offset-3">
-					<h2 class="module-title font-alt">Our features</h2>
-					<div class="module-subtitle font-serif">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</div>
+					<h2 class="module-title font-alt">Características</h2>
+					<div class="module-subtitle font-serif">Con <em>Tu Invitación Online</em> podrás en unos pocos clicks hacer que todos tus invitados reciban los detalles de tu evento.</div>
 				</div>
 			</div>
 			<div class="row">
@@ -179,7 +191,7 @@ if ( $query-> has_post_thumbnail() ) {
 					</div>
 				</div>
 				<div class="col-md-6 col-lg-6 hidden-xs hidden-sm">
-					<div class="alt-services-image align-center"><img src="wp-content/uploads/2018/02/promo.png" alt="Feature Image"></div>
+					<div class="alt-services-image align-center"><img src="http://127.0.0.1/tuinvitaciononline/wp-content/uploads/2018/02/iPhone-X-Lockscreen-Flower-Muscari.png" alt="Feature Image"></div>
 				</div>
 				<div class="col-sm-6 col-md-3 col-lg-3">
 					<div class="alt-features-item">

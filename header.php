@@ -48,14 +48,13 @@
 					</div>
 					<div class="collapse navbar-collapse" id="custom-collapse">
 						<ul class="nav navbar-nav navbar-right">
-							<li><a href="#totop">Home</a></li>
-							<li><a class="section-scroll" href="#services">Services</a></li>
-							<li><a class="section-scroll" href="#works">Works</a></li>
-							<li><a class="section-scroll" href="#alt-features">Features</a></li>
-							<li><a class="section-scroll" href="#team">Team</a></li>
-							<li><a class="section-scroll" href="#pricing">Prices</a></li>
-							<li><a class="section-scroll" href="#news">News</a></li>
-							<li><a class="section-scroll" href="#contact">Contact</a></li>
+							<li><a href="#totop">Inicio</a></li>
+							<li><a class="section-scroll" href="#services">Servicios</a></li>
+							<li><a class="section-scroll" href="#alt-features">Características</a></li>
+							<li><a class="section-scroll" href="#team">Equipo</a></li>
+							<li><a class="section-scroll" href="#pricing">Precios</a></li>
+							<li><a class="section-scroll" href="#news">Noticias</a></li>
+							<li><a class="section-scroll" href="#contact">Contacto</a></li>
 						</ul>
 					</div>
 				</div>

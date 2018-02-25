@@ -15,10 +15,10 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
          * WOW Animation When You Scroll
          /* ---------------------------------------------- */
 
-        wow = new WOW({
+        /*wow = new WOW({
             mobile: false
         });
-        wow.init();
+        wow.init();*/
 
 
         /* ---------------------------------------------- /*
