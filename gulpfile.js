@@ -11,6 +11,7 @@ var gulp = require('gulp'),
 	cssmin = require('gulp-cssmin'),
 	runSequence = require('run-sequence'),
 	iconfont = require('gulp-iconfont'),
+	iconfontHtml = require('gulp-iconfont-template'),
 	consolidate = require('gulp-consolidate'),
 	imagemin = require('gulp-imagemin'),
 	runTimestamp = Math.round(Date.now() / 1000),
@@ -67,6 +68,20 @@ gulp.task("images", function () {
 */
 gulp.task('icons', function () {
 	return gulp.src('./assets/src/svg/*.svg')
+		.pipe(iconfontHtml({
+			fontName: 'icons',
+			path: './assets/src/svg/icon-template.html',
+		}))
+		.on('glyphs', function (glyphs, options) {
+			gulp.src('./assets/src/svg/icon-template.html')
+				.pipe(consolidate('lodash', {
+					glyphs: glyphs,
+					fontName: 'icons',
+					fontPath: '../fonts/',
+					className: 'icon'
+				}))
+				.pipe(gulp.dest('./assets/src/scss/'));
+		})
 		.pipe(iconfont({
 			fontName: 'icons',
 			prependUnicode: true,
@@ -131,7 +146,7 @@ gulp.task('browsersync', function () {
 	//Generamos el watch
 	gulp.watch(['./assets/src/scss/**/*.scss'], ['sass']).on('change', browserSync.reload);
 	gulp.watch(['./assets/src/svg/*.svg'], ['icons', 'sass']).on('change', browserSync.reload);
-	gulp.watch(['./assets/src/scripts/**/*.*'], ['scripts']).on('change', browserSync.reload);
+	gulp.watch(['./assets/src/js/**/*.*'], ['scripts']).on('change', browserSync.reload);
 	gulp.watch(['./**/*.html','./**/*.php']).on('change', browserSync.reload);
 });
 

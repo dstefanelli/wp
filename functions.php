@@ -390,6 +390,7 @@ function wedding_style_script()
 	wp_enqueue_style( 'bootstrap', get_theme_file_uri( '/assets/lib/bootstrap/dist/css/bootstrap.css' ), array(), '3.3.7' );
 	wp_enqueue_style( 'animate', get_theme_file_uri( '/assets/lib/animate.css/animate.css' ), array(), '1.0' );
 	wp_enqueue_style( 'flexislider', get_theme_file_uri( '/assets/lib/flexslider/flexslider.css' ), array(), '1.0' );
+	wp_enqueue_style( 'flexislider', get_theme_file_uri( '/assets/lib/flexslider/flexslider.css' ), array(), '1.0' );
 	wp_enqueue_style( 'style', get_theme_file_uri( '/assets/css/style.css' ), array(), '1.0' );
 	
 	
@@ -402,7 +403,7 @@ function wedding_style_script()
 	wp_enqueue_script( 'flexslider', get_theme_file_uri( '/assets/lib/flexslider/jquery.flexslider.js' ), array( 'jquery' ), '2.1.2', true );
 	wp_enqueue_script( 'owl-carousel', get_theme_file_uri( '/assets/lib/owl.carousel/dist/owl.carousel.min.js' ), array( 'jquery' ), '2.1.2', true );
 	wp_enqueue_script( 'magnific-popup', get_theme_file_uri( '/assets/lib/magnific-popup/dist/jquery.magnific-popup.js' ), array( 'jquery' ), '2.1.2', true );
-	wp_enqueue_script( 'simple-text-rotator', get_theme_file_uri( '/ssets/lib/simple-text-rotator/jquery.simple-text-rotator.min.js' ), array( 'jquery' ), '2.1.2', true );
+	wp_enqueue_script( 'simple-text-rotator', get_theme_file_uri( '/assets/lib/simple-text-rotator/jquery.simple-text-rotator.min.js' ), array( 'jquery' ), '2.1.2', true );
 	
 	wp_enqueue_script( 'plugins', get_theme_file_uri( '/assets/js/plugins.js' ), array( 'jquery' ), '2.1.2', true );
 	wp_enqueue_script( 'main', get_theme_file_uri( '/assets/js/main.js' ), array( 'jquery' ), '2.1.2', true );

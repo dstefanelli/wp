@@ -25,6 +25,10 @@ img {
 	height: auto;
 }
 
+img.img-responsive {
+	width: 100%;
+}
+
 iframe {
 	border: 0;
 }
@@ -181,7 +185,7 @@ a,
 .module,
 .module-small {
 	position: relative;
-	padding: 140px 0;
+	padding: 120px 0;
 	background-repeat: no-repeat;
 	background-position: 50% 50%;
 	-webkit-background-size: cover;

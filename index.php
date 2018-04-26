@@ -10,7 +10,7 @@
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
  * @package WordPress
- * @subpackage Wedding
+ * @subpackage Wedding Template
  * @since 1.0
  * @version 1.0
  */
@@ -33,7 +33,7 @@ get_header(); ?>
 						<div class="caption-content">';
 				echo '<div class="font-alt mb-30 titan-title-size-1">'.get_the_title().'</div>';
 				echo '<div class="font-alt mb-40 titan-title-size-4">'.get_the_content().'</div>
-							<a class="section-scroll btn btn-border-w btn-round" href="#">Ver como</a>
+							<a class="section-scroll btn btn-border-w btn-round" href="#alt-features">Ver como</a>
 						</div>
 					</div>
 				</section>';
@@ -74,7 +74,7 @@ get_header(); ?>
 			</div>
 		</div>
 	</section>
-	<section class="module bg-dark-60" data-background="wp-content/uploads/2018/02/section-6.jpg">
+	<!--<section class="module bg-dark-60" data-background="wp-content/uploads/2018/02/section-6.jpg">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-12">
@@ -86,7 +86,7 @@ get_header(); ?>
 				</div>
 			</div>
 		</div>
-	</section>
+	</section>-->
 	<!--<section class="module pb-0" id="works">
 		<div class="container">
 			<div class="row">
@@ -163,6 +163,16 @@ get_header(); ?>
 			</div>
 		</div>
 	</section>-->
+	<section class="module module-video bg-dark-30" data-background="assets/images/restaurant/coffee_bg.png">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6 col-sm-offset-3">
+					<h2 class="module-title font-alt mb-0">The Best Restaurant In Town. Enjoy Your Meal</h2>
+				</div>
+			</div>
+		</div>
+		<div class="video-player" data-property="{videoURL:'https://www.youtube.com/watch?v=i_XV7YCRzKo', containment:'.module-video', startAt:3, mute:true, autoPlay:true, loop:true, opacity:1, showControls:false, showYTLogo:false, vol:25}"></div>
+	</section>
 	<section class="module" id="alt-features">
 		<div class="container">
 			<div class="row">
@@ -287,7 +297,7 @@ get_header(); ?>
 			</div>
 		</div>
 	</section>
-	<section class="module bg-dark-60" data-background="wp-content/uploads/2018/02/section-3.jpg">
+	<!--<section class="module bg-dark-60" data-background="wp-content/uploads/2018/02/section-3.jpg">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-6 col-sm-offset-3">
@@ -326,36 +336,21 @@ get_header(); ?>
 				</div>
 			</div>
 		</div>
-	</section>
+	</section>-->
 	<section class="module" id="pricing">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-6 col-sm-offset-3">
-					<h2 class="module-title font-alt">Our Prices</h2>
+					<h2 class="module-title font-alt">Nuestros precios</h2>
 					<div class="module-subtitle font-serif">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</div>
 				</div>
 			</div>
 			<div class="row multi-columns-row">
-				<div class="col-sm-6 col-md-3 col-lg-3">
-					<div class="price-table font-alt">
-						<h4>Light</h4>
-						<div class="borderline"></div>
-						<p class="price"><span>$</span>9
-						</p>
-						<ul class="price-details">
-							<li>Free Support</li>
-							<li>15 Demos Included</li>
-							<li><span>Newsletter</span></li>
-							<li><span>Working Contact Form</span></li>
-							<li><span>Unlimited Domains</span></li>
-						</ul><a class="btn btn-d btn-round" href="#">Sign Up</a>
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-3 col-lg-3">
+				<div class="col-sm-6 col-md-4 col-lg-4">
 					<div class="price-table font-alt">
 						<h4>Basic</h4>
 						<div class="borderline"></div>
-						<p class="price"><span>$</span>29
+						<p class="price"><span>€</span>29
 						</p>
 						<ul class="price-details">
 							<li>Free Support</li>
@@ -366,12 +361,12 @@ get_header(); ?>
 						</ul><a class="btn btn-d btn-round" href="#">Sign Up</a>
 					</div>
 				</div>
-				<div class="col-sm-6 col-md-3 col-lg-3">
+				<div class="col-sm-6 col-md-4 col-lg-4">
 					<div class="price-table font-alt best">
 						<h4>Advanced</h4>
 						<p class="small">Best Choice</p>
 						<div class="borderline"></div>
-						<p class="price"><span>$</span>64
+						<p class="price"><span>€</span>64
 						</p>
 						<ul class="price-details">
 							<li>Free Support</li>
@@ -382,11 +377,11 @@ get_header(); ?>
 						</ul><a class="btn btn-d btn-round" href="#">Sign Up</a>
 					</div>
 				</div>
-				<div class="col-sm-6 col-md-3 col-lg-3">
+				<div class="col-sm-6 col-md-4 col-lg-4">
 					<div class="price-table font-alt">
 						<h4>Ultimate</h4>
 						<div class="borderline"></div>
-						<p class="price"><span>$</span>119
+						<p class="price"><span>€</span>119
 						</p>
 						<ul class="price-details">
 							<li>Free Support</li>
@@ -487,57 +482,52 @@ get_header(); ?>
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-6 col-sm-offset-3">
-					<h2 class="module-title font-alt">Latest blog posts</h2>
-					<div class="module-subtitle font-serif">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</div>
+					<h2 class="module-title font-alt">Te puede interesar</h2>
+					<div class="module-subtitle font-serif">Últimas tendencias en cuanto a bodas.</div>
 				</div>
 			</div>
 			<div class="row multi-columns-row post-columns">
-				<div class="col-sm-6 col-md-4 col-lg-4">
-					<div class="post mb-20">
-						<div class="post-thumbnail"><a href="#"><img src="wp-content/uploads/2018/02/post-1.jpg" alt="Blog-post Thumbnail"/></a></div>
-						<div class="post-header font-alt">
-							<h2 class="post-title"><a href="#">Our trip to the Alps</a></h2>
-							<div class="post-meta">By&nbsp;<a href="#">Mark Stone</a>&nbsp;| 23 November | 3 Comments
+				<!-- NOTAS -->
+				<?php 
+				$arg = array('category_name' => 'notas', 'showposts' => '3');
+				$query = new WP_Query($arg);
+				if ($query-> have_posts() ) {
+					while ($query-> have_posts() ) {
+						$query->the_post(); 						
+						$thumb_id = get_post_thumbnail_id();
+						$thumb_url = wp_get_attachment_image_src($thumb_id,'medium', true);
+						echo '<div class="col-sm-6 col-md-4 col-lg-4">
+								<div class="post mb-20">
+									<div class="post-thumbnail">
+										<a href="'.get_the_permalink().'">
+											<img src="'.$thumb_url[0].'" class="img-responsive"/>
+										</a>
+									</div>';
+						echo '<div class="post-header font-alt">
+								<h2 class="post-title">
+									<a href="'.get_the_permalink().'">'. get_the_title() .'</a>
+								</h2>
+								<div class="post-meta">By&nbsp;<a href="#">'.get_the_author().'</a>&nbsp;| '.get_the_date().' | '.get_the_comments_pagination().'
+								</div>
+							 </div>';
+						echo '<div class="post-entry">
+								<p>'. get_the_excerpt() .'</p>
+							 </div>
+								<div class="post-more">
+									<a class="more-link" href="#">Read more</a>
+								</div>
 							</div>
-						</div>
-						<div class="post-entry">
-							<p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</p>
-						</div>
-						<div class="post-more"><a class="more-link" href="#">Read more</a></div>
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-4 col-lg-4">
-					<div class="post mb-20">
-						<div class="post-thumbnail"><a href="#"><img src="wp-content/uploads/2018/02/post-2.jpg" alt="Blog-post Thumbnail"/></a></div>
-						<div class="post-header font-alt">
-							<h2 class="post-title"><a href="#">Shore after the tide</a></h2>
-							<div class="post-meta">By&nbsp;<a href="#">Andy River</a>&nbsp;| 11 November | 4 Comments
-							</div>
-						</div>
-						<div class="post-entry">
-							<p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</p>
-						</div>
-						<div class="post-more"><a class="more-link" href="#">Read more</a></div>
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-4 col-lg-4">
-					<div class="post mb-20">
-						<div class="post-thumbnail"><a href="#"><img src="wp-content/uploads/2018/02/post-3.jpg" alt="Blog-post Thumbnail"/></a></div>
-						<div class="post-header font-alt">
-							<h2 class="post-title"><a href="#">We in New Zealand</a></h2>
-							<div class="post-meta">By&nbsp;<a href="#">Dylan Woods</a>&nbsp;| 5 November | 15 Comments
-							</div>
-						</div>
-						<div class="post-entry">
-							<p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</p>
-						</div>
-						<div class="post-more"><a class="more-link" href="#">Read more</a></div>
-					</div>
-				</div>
+						</div>';		
+					
+					} // end while
+					wp_reset_postdata();
+				} // end if
+				?>
+				<!--FIN NOTAS-->
 			</div>
 		</div>
 	</section>
-	<div class="module-small bg-dark">
+<!--	<div class="module-small bg-dark">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-6 col-md-6 col-lg-4 col-lg-offset-2">
@@ -559,12 +549,13 @@ get_header(); ?>
 				</div>
 			</div>
 		</div>
-	</div>
+	</div>-->
+	<hr class="divider-d">
 	<section class="module" id="contact">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-6 col-sm-offset-3">
-					<h2 class="module-title font-alt">Get in touch</h2>
+					<h2 class="module-title font-alt">Contáctenos</h2>
 					<div class="module-subtitle font-serif"></div>
 				</div>
 			</div>
@@ -572,21 +563,21 @@ get_header(); ?>
 				<div class="col-sm-6 col-sm-offset-3">
 					<form id="contactForm" role="form" method="post" action="php/contact.php">
 						<div class="form-group">
-							<label class="sr-only" for="name">Name</label>
-							<input class="form-control" type="text" id="name" name="name" placeholder="Your Name*" required="required" data-validation-required-message="Please enter your name."/>
+							<label class="sr-only" for="name">Nombre</label>
+							<input class="form-control" type="text" id="name" name="name" placeholder="Nombre*" required="required" data-validation-required-message="Por favor ingrese su nombre."/>
 							<p class="help-block text-danger"></p>
 						</div>
 						<div class="form-group">
-							<label class="sr-only" for="email">Email</label>
-							<input class="form-control" type="email" id="email" name="email" placeholder="Your Email*" required="required" data-validation-required-message="Please enter your email address."/>
+							<label class="sr-only" for="email">E-mail</label>
+							<input class="form-control" type="email" id="email" name="email" placeholder="E-mail*" required="required" data-validation-required-message="Por favor ingrese su e-mail."/>
 							<p class="help-block text-danger"></p>
 						</div>
 						<div class="form-group">
-							<textarea class="form-control" rows="7" id="message" name="message" placeholder="Your Message*" required="required" data-validation-required-message="Please enter your message."></textarea>
+							<textarea class="form-control" rows="7" id="message" name="message" placeholder="Mensaje*" required="required" data-validation-required-message="Por favor ingrese su mensaje..."></textarea>
 							<p class="help-block text-danger"></p>
 						</div>
 						<div class="text-center">
-							<button class="btn btn-block btn-round btn-d" id="cfsubmit" type="submit">Submit</button>
+							<button class="btn btn-block btn-round btn-d" id="cfsubmit" type="submit">Enviar</button>
 						</div>
 					</form>
 					<div class="ajax-response font-alt" id="contactFormResponse"></div>
@@ -594,21 +585,18 @@ get_header(); ?>
 			</div>
 		</div>
 	</section>
-	<section id="map-section">
-		<div id="map"></div>
-	</section>
-	<div class="module-small bg-dark">
+	<div class="pt-40 pb-20 bg-dark"><!--module-small-->
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-3">
+				<div class="col-sm-12">
 					<div class="widget">
-						<h5 class="widget-title font-alt">About Titan</h5>
-						<p>The languages only differ in their grammar, their pronunciation and their most common words.</p>
-						<p>Phone: +1 234 567 89 10</p>Fax: +1 234 567 89 10
-						<p>Email:<a href="#">somecompany@example.com</a></p>
+						<h5 class="widget-title font-alt">Acerca de Tu Invitación Online</h5>
+						<p></p>
+						<p>Teléfono de contácto: +34 655 608 224</p>
+						<p>Email:<a href="#"> info@tuinvitacion.online</a></p>
 					</div>
 				</div>
-				<div class="col-sm-3">
+<!--				<div class="col-sm-3">
 					<div class="widget">
 						<h5 class="widget-title font-alt">Recent Comments</h5>
 						<ul class="icon-list">
@@ -620,7 +608,7 @@ get_header(); ?>
 						</ul>
 					</div>
 				</div>
-				<div class="col-sm-3">
+				<div class="col-sm-4">
 					<div class="widget">
 						<h5 class="widget-title font-alt">Blog Categories</h5>
 						<ul class="icon-list">
@@ -632,7 +620,7 @@ get_header(); ?>
 						</ul>
 					</div>
 				</div>
-				<div class="col-sm-3">
+				<div class="col-sm-4">
 					<div class="widget">
 						<h5 class="widget-title font-alt">Popular Posts</h5>
 						<ul class="widget-posts">
@@ -652,7 +640,7 @@ get_header(); ?>
 							</li>
 						</ul>
 					</div>
-				</div>
+</div>-->
 			</div>
 		</div>
 	</div>
