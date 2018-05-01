@@ -17,478 +17,298 @@
 
 get_header(); ?>
 
-
-
-<?php 
-	$arg = array('category_name' => 'destacada');
-	$destacada = new WP_Query($arg);
-	if ( $destacada-> have_posts() ) {
-		while ( $destacada-> have_posts() ) {
-			$destacada->the_post(); 
-			if( has_post_thumbnail() )
-			{
-				$feat_image_url = wp_get_attachment_url( get_post_thumbnail_id() );
-				echo '<section class="home-section home-full-height bg-dark bg-gradient" id="home"  data-background="'.$feat_image_url.'">';
-				echo '<div class="titan-caption">
-						<div class="caption-content">';
-				echo '<div class="font-alt mb-30 titan-title-size-1">'.get_the_title().'</div>';
-				echo '<div class="font-alt mb-40 titan-title-size-4">'.get_the_content().'</div>
-							<a class="section-scroll btn btn-border-w btn-round" href="#alt-features">Ver como</a>
+	
+    <?php get_template_part('template-parts/destacada'); // Template categoría destacada ?>
+	
+		<div class="main">
+			<section class="module" id="services">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-6 col-sm-offset-3">
+							<h2 class="module-title font-alt">Nuestros Servicios</h2>
+							<div class="module-subtitle font-serif">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</div>
 						</div>
 					</div>
-				</section>';
-			}
-			
-		} // end while
-		wp_reset_postdata();
-	} // end if
-?>
-
-<div class="main">
-	<section class="module" id="services">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-6 col-sm-offset-3">
-					<h2 class="module-title font-alt">Nuestros Servicios</h2>
-					<div class="module-subtitle font-serif">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</div>
-				</div>
-			</div>
-			<div class="row multi-columns-row">
-			
-				<?php 
-					$arg = array('category_name' => 'servicios', 'showposts' => '8');
-					$query = new WP_Query($arg);
-					if ($query-> have_posts() ) {
-						while ($query-> have_posts() ) {
-							$query->the_post(); 
-							echo '<div class="col-md-3 col-sm-6 col-xs-12">
-									<div class="features-item">
-										<div class="features-icon"><span class=" ion icon-lightbulb"></span></div>
-										<h3 class="features-title font-alt">'. get_the_title() .'</h3>';
-							echo '<p>'.get_the_content().'</p>';
-							echo '</div></div>';
-						} // end while
-						wp_reset_postdata();
-					} // end if
-				?>
-			</div>
-		</div>
-	</section>
-	<!--<section class="module bg-dark-60" data-background="wp-content/uploads/2018/02/section-6.jpg">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-12">
-					<div class="video-box">
-						<div class="video-box-icon"><a class="video-pop-up" href="https://www.youtube.com/watch?v=TTxZj3DZiIM"><span class="icon-video"></span></a></div>
-						<div class="video-title font-alt">Presentation</div>
-						<div class="video-subtitle font-alt">Watch the video about our new products</div>
+					<div class="row multi-columns-row">
+						<?php get_template_part('template-parts/servicios'); // Template categoría servicios ?>
 					</div>
 				</div>
-			</div>
-		</div>
-	</section>-->
-	<!--<section class="module pb-0" id="works">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-6 col-sm-offset-3">
-					<h2 class="module-title font-alt">Our Works</h2>
-					<div class="module-subtitle font-serif"></div>
+			</section>
+			<section class="module" id="alt-features">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-6 col-sm-offset-3">
+							<h2 class="module-title font-alt">Características</h2>
+							<div class="module-subtitle font-serif">En solo un <em>Click</em> haz que tus invitados reciban los detalles de tu evento.</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6 col-md-3 col-lg-3">
+							<div class="alt-features-item">
+								<div class="alt-features-icon"><span class="icon-strategy"></span></div>
+								<h3 class="alt-features-title font-alt">Branding</h3>A wonderful serenity has taken possession of my entire soul like these sweet mornings.
+							</div>
+							<div class="alt-features-item">
+								<div class="alt-features-icon"><span class="icon-tools-2"></span></div>
+								<h3 class="alt-features-title font-alt">Development</h3>A wonderful serenity has taken possession of my entire soul like these sweet mornings.
+							</div>
+							<div class="alt-features-item">
+								<div class="alt-features-icon"><span class="icon-target"></span></div>
+								<h3 class="alt-features-title font-alt">Marketing</h3>A wonderful serenity has taken possession of my entire soul like these sweet mornings.
+							</div>
+							<div class="alt-features-item">
+								<div class="alt-features-icon"><span class="icon-tools"></span></div>
+								<h3 class="alt-features-title font-alt">Design</h3>A wonderful serenity has taken possession of my entire soul like these sweet mornings.
+							</div>
+						</div>
+						<div class="col-md-6 col-lg-6 hidden-xs hidden-sm">
+							<div class="alt-services-image align-center"><img src="http://127.0.0.1/tuinvitaciononline/wp-content/uploads/2018/05/iPhone-X-Silver.png" alt="Feature Image"></div>
+						</div>
+						<div class="col-sm-6 col-md-3 col-lg-3">
+							<div class="alt-features-item">
+								<div class="alt-features-icon"><span class="icon-camera"></span></div>
+								<h3 class="alt-features-title font-alt">Photography</h3>A wonderful serenity has taken possession of my entire soul like these sweet mornings.
+							</div>
+							<div class="alt-features-item">
+								<div class="alt-features-icon"><span class="icon-mobile"></span></div>
+								<h3 class="alt-features-title font-alt">Mobile</h3>A wonderful serenity has taken possession of my entire soul like these sweet mornings.
+							</div>
+							<div class="alt-features-item">
+								<div class="alt-features-icon"><span class="icon-linegraph"></span></div>
+								<h3 class="alt-features-title font-alt">Music</h3>A wonderful serenity has taken possession of my entire soul like these sweet mornings.
+							</div>
+							<div class="alt-features-item">
+								<div class="alt-features-icon"><span class="icon-basket"></span></div>
+								<h3 class="alt-features-title font-alt">Shop</h3>A wonderful serenity has taken possession of my entire soul like these sweet mornings.
+							</div>
+						</div>
+					</div>
 				</div>
-			</div>
-		</div>
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-12">
-					<ul class="filter font-alt" id="filters">
-						<li><a class="current wow fadeInUp" href="#" data-filter="*">All</a></li>
-						<li><a class="wow fadeInUp" href="#" data-filter=".illustration" data-wow-delay="0.2s">Illustration</a></li>
-						<li><a class="wow fadeInUp" href="#" data-filter=".marketing" data-wow-delay="0.4s">Marketing</a></li>
-						<li><a class="wow fadeInUp" href="#" data-filter=".photography" data-wow-delay="0.6s">Photography</a></li>
-						<li><a class="wow fadeInUp" href="#" data-filter=".webdesign" data-wow-delay="0.6s">Web Design</a></li>
+			</section>
+			<section class="module" id="team">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-6 col-sm-offset-3">
+							<h2 class="module-title font-alt">Meet Our Team</h2>
+							<div class="module-subtitle font-serif">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="mb-sm-20 wow fadeInUp col-sm-6 col-md-3" onclick="wow fadeInUp">
+							<div class="team-item">
+								<div class="team-image"><img src="wp-content/uploads/2018/02/team-1.jpg" alt="Member Photo" />
+									<div class="team-detail">
+										<h5 class="font-alt">Hi all</h5>
+										<p class="font-serif">Lorem ipsum dolor sit amet, consectetur adipiscing elit lacus, a&amp;nbsp;iaculis diam.</p>
+										<div class="team-social"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-dribbble"></i></a><a href="#"><i class="fa fa-skype"></i></a></div>
+									</div>
+								</div>
+								<div class="team-descr font-alt">
+									<div class="team-name">Jim Stone</div>
+									<div class="team-role">Art Director</div>
+								</div>
+							</div>
+						</div>
+						<div class="mb-sm-20 wow fadeInUp col-sm-6 col-md-3" onclick="wow fadeInUp">
+							<div class="team-item">
+								<div class="team-image"><img src="wp-content/uploads/2018/02/team-2.jpg" alt="Member Photo" />
+									<div class="team-detail">
+										<h5 class="font-alt">Good day</h5>
+										<p class="font-serif">Lorem ipsum dolor sit amet, consectetur adipiscing elit lacus, a&amp;nbsp;iaculis diam.</p>
+										<div class="team-social"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-dribbble"></i></a><a href="#"><i class="fa fa-skype"></i></a></div>
+									</div>
+								</div>
+								<div class="team-descr font-alt">
+									<div class="team-name">Andy River</div>
+									<div class="team-role">Creative director</div>
+								</div>
+							</div>
+						</div>
+						<div class="mb-sm-20 wow fadeInUp col-sm-6 col-md-3" onclick="wow fadeInUp">
+							<div class="team-item">
+								<div class="team-image"><img src="wp-content/uploads/2018/02/team-3.jpg" alt="Member Photo" />
+									<div class="team-detail">
+										<h5 class="font-alt">Hello</h5>
+										<p class="font-serif">Lorem ipsum dolor sit amet, consectetur adipiscing elit lacus, a&amp;nbsp;iaculis diam.</p>
+										<div class="team-social"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-dribbble"></i></a><a href="#"><i class="fa fa-skype"></i></a></div>
+									</div>
+								</div>
+								<div class="team-descr font-alt">
+									<div class="team-name">Adele Snow</div>
+									<div class="team-role">Account manager</div>
+								</div>
+							</div>
+						</div>
+						<div class="mb-sm-20 wow fadeInUp col-sm-6 col-md-3" onclick="wow fadeInUp">
+							<div class="team-item">
+								<div class="team-image"><img src="wp-content/uploads/2018/02/team-4.jpg" alt="Member Photo" />
+									<div class="team-detail">
+										<h5 class="font-alt">Yes, it's me</h5>
+										<p class="font-serif">Lorem ipsum dolor sit amet, consectetur adipiscing elit lacus, a&amp;nbsp;iaculis diam.</p>
+										<div class="team-social"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-dribbble"></i></a><a href="#"><i class="fa fa-skype"></i></a></div>
+									</div>
+								</div>
+								<div class="team-descr font-alt">
+									<div class="team-name">Dylan Woods</div>
+									<div class="team-role">Developer</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="module bg-dark-60 pt-0 pb-0 parallax-bg testimonial" data-background="http://127.0.0.1/tuinvitaciononline/wp-content/uploads/2018/05/adult-affection-beard-842546.jpg">
+				<div class="testimonials-slider pt-140 pb-140">
+					<ul class="slides">
+						<li>
+							<div class="container">
+								<div class="row">
+									<div class="col-sm-12">
+										<div class="module-icon"><span class="icon-quote"></span></div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-8 col-sm-offset-2">
+										<blockquote class="testimonial-text font-alt">I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine.</blockquote>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-4 col-sm-offset-4">
+										<div class="testimonial-author">
+											<div class="testimonial-caption font-alt">
+												<div class="testimonial-title">Jack Woods</div>
+												<div class="testimonial-descr">SomeCompany INC, CEO</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</li>
+						<!--<li>
+<div class="container">
+<div class="row">
+<div class="col-sm-12">
+<div class="module-icon"><span class="icon-quote"></span></div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-8 col-sm-offset-2">
+<blockquote class="testimonial-text font-alt">I should be incapable of drawing a single stroke at the present moment; and yet I feel that I never was a greater artist than now.</blockquote>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-4 col-sm-offset-4">
+<div class="testimonial-author">
+<div class="testimonial-caption font-alt">
+<div class="testimonial-title">Jim Stone</div>
+<div class="testimonial-descr">SomeCompany INC, CEO</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<div class="container">
+<div class="row">
+<div class="col-sm-12">
+<div class="module-icon"><span class="icon-quote"></span></div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-8 col-sm-offset-2">
+<blockquote class="testimonial-text font-alt">I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents.</blockquote>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-4 col-sm-offset-4">
+<div class="testimonial-author">
+<div class="testimonial-caption font-alt">
+<div class="testimonial-title">Adele Snow</div>
+<div class="testimonial-descr">SomeCompany INC, CEO</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</li>-->
 					</ul>
 				</div>
-			</div>
-		</div>
-		<ul class="works-grid works-grid-gut works-grid-3 works-hover-w" id="works-grid">
-			<li class="work-item illustration webdesign"><a href="portfolio-single-1.html">
-				<div class="work-image"><img src="wp-content/uploads/2018/02/work-1.jpg" alt="Portfolio Item"/></div>
-				<div class="work-caption font-alt">
-					<h3 class="work-title">Corporate Identity</h3>
-					<div class="work-descr">Illustration</div>
-				</div></a></li>
-			<li class="work-item marketing photography"><a href="portfolio-single-1.html">
-				<div class="work-image"><img src="wp-content/uploads/2018/02/work-2.jpg" alt="Portfolio Item"/></div>
-				<div class="work-caption font-alt">
-					<h3 class="work-title">Bag MockUp</h3>
-					<div class="work-descr">Marketing</div>
-				</div></a></li>
-			<li class="work-item illustration photography"><a href="portfolio-single-1.html">
-				<div class="work-image"><img src="wp-content/uploads/2018/02/work-3.jpg" alt="Portfolio Item"/></div>
-				<div class="work-caption font-alt">
-					<h3 class="work-title">Disk Cover</h3>
-					<div class="work-descr">Illustration</div>
-				</div></a></li>
-			<li class="work-item marketing photography"><a href="portfolio-single-1.html">
-				<div class="work-image"><img src="wp-content/uploads/2018/02/work-4.jpg" alt="Portfolio Item"/></div>
-				<div class="work-caption font-alt">
-					<h3 class="work-title">Business Card</h3>
-					<div class="work-descr">Photography</div>
-				</div></a></li>
-			<li class="work-item illustration webdesign"><a href="portfolio-single-1.html">
-				<div class="work-image"><img src="wp-content/uploads/2018/02/work-5.jpg" alt="Portfolio Item"/></div>
-				<div class="work-caption font-alt">
-					<h3 class="work-title">Business Card</h3>
-					<div class="work-descr">Webdesign</div>
-				</div></a></li>
-			<li class="work-item marketing webdesign"><a href="portfolio-single-1.html">
-				<div class="work-image"><img src="wp-content/uploads/2018/02/work-6.jpg" alt="Portfolio Item"/></div>
-				<div class="work-caption font-alt">
-					<h3 class="work-title">Business Cards in paper clip</h3>
-					<div class="work-descr">Marketing</div>
-				</div></a></li>
-		</ul>
-	</section>
-	<section class="module-small bg-dark">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-6 col-md-8 col-lg-6 col-lg-offset-2">
-					<div class="callout-text font-alt">
-						<h3 class="callout-title">Want to see more works?</h3>
-						<p>We are always open to interesting projects.</p>
+			</section>
+			<section class="module" id="pricing">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-6 col-sm-offset-3">
+							<h2 class="module-title font-alt">Nuestros precios</h2>
+							<div class="module-subtitle font-serif">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</div>
+						</div>
 					</div>
-				</div>
-				<div class="col-sm-6 col-md-4 col-lg-2">
-					<div class="callout-btn-box"><a class="btn btn-w btn-round" href="portfolio_boxed_gutter_col_3.html">Lets view portfolio</a></div>
-				</div>
-			</div>
-		</div>
-	</section>-->
-	<section class="module module-video bg-dark-30" data-background="assets/images/restaurant/coffee_bg.png">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-6 col-sm-offset-3">
-					<h2 class="module-title font-alt mb-0">The Best Restaurant In Town. Enjoy Your Meal</h2>
-				</div>
-			</div>
-		</div>
-		<div class="video-player" data-property="{videoURL:'https://www.youtube.com/watch?v=i_XV7YCRzKo', containment:'.module-video', startAt:3, mute:true, autoPlay:true, loop:true, opacity:1, showControls:false, showYTLogo:false, vol:25}"></div>
-	</section>
-	<section class="module" id="alt-features">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-6 col-sm-offset-3">
-					<h2 class="module-title font-alt">Características</h2>
-					<div class="module-subtitle font-serif">Con <em>Tu Invitación Online</em> podrás en unos pocos clicks hacer que todos tus invitados reciban los detalles de tu evento.</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-6 col-md-3 col-lg-3">
-					<div class="alt-features-item">
-						<div class="alt-features-icon"><span class="icon-strategy"></span></div>
-						<h3 class="alt-features-title font-alt">Branding</h3>A wonderful serenity has taken possession of my entire soul like these sweet mornings.
-					</div>
-					<div class="alt-features-item">
-						<div class="alt-features-icon"><span class="icon-tools-2"></span></div>
-						<h3 class="alt-features-title font-alt">Development</h3>A wonderful serenity has taken possession of my entire soul like these sweet mornings.
-					</div>
-					<div class="alt-features-item">
-						<div class="alt-features-icon"><span class="icon-target"></span></div>
-						<h3 class="alt-features-title font-alt">Marketing</h3>A wonderful serenity has taken possession of my entire soul like these sweet mornings.
-					</div>
-					<div class="alt-features-item">
-						<div class="alt-features-icon"><span class="icon-tools"></span></div>
-						<h3 class="alt-features-title font-alt">Design</h3>A wonderful serenity has taken possession of my entire soul like these sweet mornings.
-					</div>
-				</div>
-				<div class="col-md-6 col-lg-6 hidden-xs hidden-sm">
-					<div class="alt-services-image align-center"><img src="http://127.0.0.1/tuinvitaciononline/wp-content/uploads/2018/02/iPhone-X-Lockscreen-Flower-Muscari.png" alt="Feature Image"></div>
-				</div>
-				<div class="col-sm-6 col-md-3 col-lg-3">
-					<div class="alt-features-item">
-						<div class="alt-features-icon"><span class="icon-camera"></span></div>
-						<h3 class="alt-features-title font-alt">Photography</h3>A wonderful serenity has taken possession of my entire soul like these sweet mornings.
-					</div>
-					<div class="alt-features-item">
-						<div class="alt-features-icon"><span class="icon-mobile"></span></div>
-						<h3 class="alt-features-title font-alt">Mobile</h3>A wonderful serenity has taken possession of my entire soul like these sweet mornings.
-					</div>
-					<div class="alt-features-item">
-						<div class="alt-features-icon"><span class="icon-linegraph"></span></div>
-						<h3 class="alt-features-title font-alt">Music</h3>A wonderful serenity has taken possession of my entire soul like these sweet mornings.
-					</div>
-					<div class="alt-features-item">
-						<div class="alt-features-icon"><span class="icon-basket"></span></div>
-						<h3 class="alt-features-title font-alt">Shop</h3>A wonderful serenity has taken possession of my entire soul like these sweet mornings.
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<hr class="divider-w">
-	<section class="module" id="team">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-6 col-sm-offset-3">
-					<h2 class="module-title font-alt">Meet Our Team</h2>
-					<div class="module-subtitle font-serif">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="mb-sm-20 wow fadeInUp col-sm-6 col-md-3" onclick="wow fadeInUp">
-					<div class="team-item">
-						<div class="team-image"><img src="wp-content/uploads/2018/02/team-1.jpg" alt="Member Photo"/>
-							<div class="team-detail">
-								<h5 class="font-alt">Hi all</h5>
-								<p class="font-serif">Lorem ipsum dolor sit amet, consectetur adipiscing elit lacus, a&amp;nbsp;iaculis diam.</p>
-								<div class="team-social"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-dribbble"></i></a><a href="#"><i class="fa fa-skype"></i></a></div>
+					<div class="row multi-columns-row">
+						<div class="col-sm-6 col-md-4 col-lg-4">
+							<div class="price-table font-alt">
+								<h4>Basic</h4>
+								<div class="borderline"></div>
+								<p class="price"><span>€</span>29
+								</p>
+								<ul class="price-details">
+									<li>Free Support</li>
+									<li>15 Demos Included</li>
+									<li>Newsletter</li>
+									<li><span>Working Contact Form</span></li>
+									<li><span>Unlimited Domains</span></li>
+								</ul><a class="btn btn-d btn-round" href="#">Sign Up</a>
 							</div>
 						</div>
-						<div class="team-descr font-alt">
-							<div class="team-name">Jim Stone</div>
-							<div class="team-role">Art Director</div>
-						</div>
-					</div>
-				</div>
-				<div class="mb-sm-20 wow fadeInUp col-sm-6 col-md-3" onclick="wow fadeInUp">
-					<div class="team-item">
-						<div class="team-image"><img src="wp-content/uploads/2018/02/team-2.jpg" alt="Member Photo"/>
-							<div class="team-detail">
-								<h5 class="font-alt">Good day</h5>
-								<p class="font-serif">Lorem ipsum dolor sit amet, consectetur adipiscing elit lacus, a&amp;nbsp;iaculis diam.</p>
-								<div class="team-social"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-dribbble"></i></a><a href="#"><i class="fa fa-skype"></i></a></div>
+						<div class="col-sm-6 col-md-4 col-lg-4">
+							<div class="price-table font-alt best">
+								<h4>Advanced</h4>
+								<p class="small">Best Choice</p>
+								<div class="borderline"></div>
+								<p class="price"><span>€</span>64
+								</p>
+								<ul class="price-details">
+									<li>Free Support</li>
+									<li>15 Demos Included</li>
+									<li>Newsletter</li>
+									<li>Working Contact Form</li>
+									<li><span>Unlimited Domains</span></li>
+								</ul><a class="btn btn-d btn-round" href="#">Sign Up</a>
 							</div>
 						</div>
-						<div class="team-descr font-alt">
-							<div class="team-name">Andy River</div>
-							<div class="team-role">Creative director</div>
-						</div>
-					</div>
-				</div>
-				<div class="mb-sm-20 wow fadeInUp col-sm-6 col-md-3" onclick="wow fadeInUp">
-					<div class="team-item">
-						<div class="team-image"><img src="wp-content/uploads/2018/02/team-3.jpg" alt="Member Photo"/>
-							<div class="team-detail">
-								<h5 class="font-alt">Hello</h5>
-								<p class="font-serif">Lorem ipsum dolor sit amet, consectetur adipiscing elit lacus, a&amp;nbsp;iaculis diam.</p>
-								<div class="team-social"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-dribbble"></i></a><a href="#"><i class="fa fa-skype"></i></a></div>
-							</div>
-						</div>
-						<div class="team-descr font-alt">
-							<div class="team-name">Adele Snow</div>
-							<div class="team-role">Account manager</div>
-						</div>
-					</div>
-				</div>
-				<div class="mb-sm-20 wow fadeInUp col-sm-6 col-md-3" onclick="wow fadeInUp">
-					<div class="team-item">
-						<div class="team-image"><img src="wp-content/uploads/2018/02/team-4.jpg" alt="Member Photo"/>
-							<div class="team-detail">
-								<h5 class="font-alt">Yes, it's me</h5>
-								<p class="font-serif">Lorem ipsum dolor sit amet, consectetur adipiscing elit lacus, a&amp;nbsp;iaculis diam.</p>
-								<div class="team-social"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-dribbble"></i></a><a href="#"><i class="fa fa-skype"></i></a></div>
-							</div>
-						</div>
-						<div class="team-descr font-alt">
-							<div class="team-name">Dylan Woods</div>
-							<div class="team-role">Developer</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!--<section class="module bg-dark-60" data-background="wp-content/uploads/2018/02/section-3.jpg">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-6 col-sm-offset-3">
-					<h2 class="module-title font-alt">Scoreboard</h2>
-					<div class="module-subtitle font-serif"></div>
-				</div>
-			</div>
-			<div class="row multi-columns-row">
-				<div class="col-sm-6 col-md-3 col-lg-3">
-					<div class="count-item mb-sm-40">
-						<div class="count-icon"><span class="icon-wallet"></span></div>
-						<h3 class="count-to font-alt" data-countto="6543"></h3>
-						<h5 class="count-title font-serif">Dollars raised for charity</h5>
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-3 col-lg-3">
-					<div class="count-item mb-sm-40">
-						<div class="count-icon"><span class="icon-wine"></span></div>
-						<h3 class="count-to font-alt" data-countto="8"></h3>
-						<h5 class="count-title font-serif">Cups of wine consumed</h5>
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-3 col-lg-3">
-					<div class="count-item mb-sm-40">
-						<div class="count-icon"><span class="icon-camera"></span></div>
-						<h3 class="count-to font-alt" data-countto="184"></h3>
-						<h5 class="count-title font-serif">Photographs taken</h5>
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-3 col-lg-3">
-					<div class="count-item mb-sm-40">
-						<div class="count-icon"><span class="icon-map-pin"></span></div>
-						<h3 class="count-to font-alt" data-countto="32"></h3>
-						<h5 class="count-title font-serif">Locations covered</h5>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>-->
-	<section class="module" id="pricing">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-6 col-sm-offset-3">
-					<h2 class="module-title font-alt">Nuestros precios</h2>
-					<div class="module-subtitle font-serif">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</div>
-				</div>
-			</div>
-			<div class="row multi-columns-row">
-				<div class="col-sm-6 col-md-4 col-lg-4">
-					<div class="price-table font-alt">
-						<h4>Basic</h4>
-						<div class="borderline"></div>
-						<p class="price"><span>€</span>29
-						</p>
-						<ul class="price-details">
-							<li>Free Support</li>
-							<li>15 Demos Included</li>
-							<li>Newsletter</li>
-							<li><span>Working Contact Form</span></li>
-							<li><span>Unlimited Domains</span></li>
-						</ul><a class="btn btn-d btn-round" href="#">Sign Up</a>
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-4 col-lg-4">
-					<div class="price-table font-alt best">
-						<h4>Advanced</h4>
-						<p class="small">Best Choice</p>
-						<div class="borderline"></div>
-						<p class="price"><span>€</span>64
-						</p>
-						<ul class="price-details">
-							<li>Free Support</li>
-							<li>15 Demos Included</li>
-							<li>Newsletter</li>
-							<li>Working Contact Form</li>
-							<li><span>Unlimited Domains</span></li>
-						</ul><a class="btn btn-d btn-round" href="#">Sign Up</a>
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-4 col-lg-4">
-					<div class="price-table font-alt">
-						<h4>Ultimate</h4>
-						<div class="borderline"></div>
-						<p class="price"><span>€</span>119
-						</p>
-						<ul class="price-details">
-							<li>Free Support</li>
-							<li>15 Demos Included</li>
-							<li>Newsletter</li>
-							<li>Working Contact Form</li>
-							<li>Unlimited Domains</li>
-						</ul><a class="btn btn-d btn-round" href="#">Sign Up</a>
-					</div>
-				</div>
-			</div>
-			<div class="row mt-40">
-				<div class="col-sm-6 col-sm-offset-3 align-center">
-					<p>Everyone realizes why a new common language would be desirable: one could refuse to pay expensive translators. To achieve this, it would be necessary to have uniform grammar, pronunciation and more common words.</p>
-				</div>
-			</div>
-		</div>
-	</section>
-	<section class="module bg-dark-60 pt-0 pb-0 parallax-bg testimonial" data-background="wp-content/uploads/2018/02/testimonial_bg.jpg">
-		<div class="testimonials-slider pt-140 pb-140">
-			<ul class="slides">
-				<li>
-					<div class="container">
-						<div class="row">
-							<div class="col-sm-12">
-								<div class="module-icon"><span class="icon-quote"></span></div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-8 col-sm-offset-2">
-								<blockquote class="testimonial-text font-alt">I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine.</blockquote>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-4 col-sm-offset-4">
-								<div class="testimonial-author">
-									<div class="testimonial-caption font-alt">
-										<div class="testimonial-title">Jack Woods</div>
-										<div class="testimonial-descr">SomeCompany INC, CEO</div>
-									</div>
-								</div>
+						<div class="col-sm-6 col-md-4 col-lg-4">
+							<div class="price-table font-alt">
+								<h4>Ultimate</h4>
+								<div class="borderline"></div>
+								<p class="price"><span>€</span>119
+								</p>
+								<ul class="price-details">
+									<li>Free Support</li>
+									<li>15 Demos Included</li>
+									<li>Newsletter</li>
+									<li>Working Contact Form</li>
+									<li>Unlimited Domains</li>
+								</ul><a class="btn btn-d btn-round" href="#">Sign Up</a>
 							</div>
 						</div>
 					</div>
-				</li>
-				<li>
-					<div class="container">
-						<div class="row">
-							<div class="col-sm-12">
-								<div class="module-icon"><span class="icon-quote"></span></div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-8 col-sm-offset-2">
-								<blockquote class="testimonial-text font-alt">I should be incapable of drawing a single stroke at the present moment; and yet I feel that I never was a greater artist than now.</blockquote>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-4 col-sm-offset-4">
-								<div class="testimonial-author">
-									<div class="testimonial-caption font-alt">
-										<div class="testimonial-title">Jim Stone</div>
-										<div class="testimonial-descr">SomeCompany INC, CEO</div>
-									</div>
-								</div>
-							</div>
+					<div class="row mt-40">
+						<div class="col-sm-6 col-sm-offset-3 align-center">
+							<p>Everyone realizes why a new common language would be desirable: one could refuse to pay expensive translators. To achieve this, it would be necessary to have uniform grammar, pronunciation and more common words.</p>
 						</div>
 					</div>
-				</li>
-				<li>
-					<div class="container">
-						<div class="row">
-							<div class="col-sm-12">
-								<div class="module-icon"><span class="icon-quote"></span></div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-8 col-sm-offset-2">
-								<blockquote class="testimonial-text font-alt">I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents.</blockquote>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-4 col-sm-offset-4">
-								<div class="testimonial-author">
-									<div class="testimonial-caption font-alt">
-										<div class="testimonial-title">Adele Snow</div>
-										<div class="testimonial-descr">SomeCompany INC, CEO</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</li>
-			</ul>
-		</div>
-	</section>
-	<section class="module" id="news">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-6 col-sm-offset-3">
-					<h2 class="module-title font-alt">Te puede interesar</h2>
-					<div class="module-subtitle font-serif">Últimas tendencias en cuanto a bodas.</div>
 				</div>
-			</div>
-			<div class="row multi-columns-row post-columns">
-				<!-- NOTAS -->
-				<?php 
+			</section>
+			<section class="module" id="news">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-6 col-sm-offset-3">
+							<h2 class="module-title font-alt">Te puede interesar</h2>
+							<div class="module-subtitle font-serif">Últimas tendencias en cuanto a bodas.</div>
+						</div>
+					</div>
+					<div class="row multi-columns-row post-columns">
+						<!-- NOTAS -->
+						<?php 
 				$arg = array('category_name' => 'notas', 'showposts' => '3');
 				$query = new WP_Query($arg);
 				if ($query-> have_posts() ) {
@@ -523,80 +343,57 @@ get_header(); ?>
 					wp_reset_postdata();
 				} // end if
 				?>
-				<!--FIN NOTAS-->
-			</div>
-		</div>
-	</section>
-<!--	<div class="module-small bg-dark">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-6 col-md-6 col-lg-4 col-lg-offset-2">
-					<div class="callout-text font-alt">
-						<h3 class="callout-title">Subscribe now</h3>
-						<p>We will not spam your email.</p>
+							<!--FIN NOTAS-->
 					</div>
 				</div>
-				<div class="col-sm-6 col-md-6 col-lg-4">
-					<div class="callout-btn-box">
-						<form id="subscription-form" role="form" method="post" action="php/subscribe.php">
-							<div class="input-group">
-								<input class="form-control" type="email" id="semail" name="semail" placeholder="Your Email" data-validation-required-message="Please enter your email address." required="required"/><span class="input-group-btn">
-								<button class="btn btn-g btn-round" id="subscription-form-submit" type="submit">Submit</button></span>
+			</section>
+			<section class="module" id="contact">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-6 col-sm-offset-3">
+							<h2 class="module-title font-alt">Contáctenos</h2>
+							<div class="module-subtitle font-serif"></div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6 col-sm-offset-3">
+							<form id="contactForm" role="form" method="post" action="php/contact.php">
+								<div class="form-group">
+									<label class="sr-only" for="name">Nombre</label>
+									<input class="form-control" type="text" id="name" name="name" placeholder="Nombre*" required="required" data-validation-required-message="Por favor ingrese su nombre." />
+									<p class="help-block text-danger"></p>
+								</div>
+								<div class="form-group">
+									<label class="sr-only" for="email">E-mail</label>
+									<input class="form-control" type="email" id="email" name="email" placeholder="E-mail*" required="required" data-validation-required-message="Por favor ingrese su e-mail." />
+									<p class="help-block text-danger"></p>
+								</div>
+								<div class="form-group">
+									<textarea class="form-control" rows="7" id="message" name="message" placeholder="Mensaje*" required="required" data-validation-required-message="Por favor ingrese su mensaje..."></textarea>
+									<p class="help-block text-danger"></p>
+								</div>
+								<div class="text-center">
+									<button class="btn btn-block btn-round btn-d" id="cfsubmit" type="submit">Enviar</button>
+								</div>
+							</form>
+							<div class="ajax-response font-alt" id="contactFormResponse"></div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<div class="pt-40 pb-20 bg-dark">
+				<!--module-small-->
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="widget">
+								<h5 class="widget-title font-alt">Acerca de Tu Invitación Online</h5>
+								<p></p>
+								<p>Teléfono de contácto: +34 655 608 224</p>
+								<p>Email:<a href="#"> info@tuinvitacion.online</a></p>
 							</div>
-						</form>
-						<div class="text-center" id="subscription-response"></div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>-->
-	<hr class="divider-d">
-	<section class="module" id="contact">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-6 col-sm-offset-3">
-					<h2 class="module-title font-alt">Contáctenos</h2>
-					<div class="module-subtitle font-serif"></div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-6 col-sm-offset-3">
-					<form id="contactForm" role="form" method="post" action="php/contact.php">
-						<div class="form-group">
-							<label class="sr-only" for="name">Nombre</label>
-							<input class="form-control" type="text" id="name" name="name" placeholder="Nombre*" required="required" data-validation-required-message="Por favor ingrese su nombre."/>
-							<p class="help-block text-danger"></p>
 						</div>
-						<div class="form-group">
-							<label class="sr-only" for="email">E-mail</label>
-							<input class="form-control" type="email" id="email" name="email" placeholder="E-mail*" required="required" data-validation-required-message="Por favor ingrese su e-mail."/>
-							<p class="help-block text-danger"></p>
-						</div>
-						<div class="form-group">
-							<textarea class="form-control" rows="7" id="message" name="message" placeholder="Mensaje*" required="required" data-validation-required-message="Por favor ingrese su mensaje..."></textarea>
-							<p class="help-block text-danger"></p>
-						</div>
-						<div class="text-center">
-							<button class="btn btn-block btn-round btn-d" id="cfsubmit" type="submit">Enviar</button>
-						</div>
-					</form>
-					<div class="ajax-response font-alt" id="contactFormResponse"></div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<div class="pt-40 pb-20 bg-dark"><!--module-small-->
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-12">
-					<div class="widget">
-						<h5 class="widget-title font-alt">Acerca de Tu Invitación Online</h5>
-						<p></p>
-						<p>Teléfono de contácto: +34 655 608 224</p>
-						<p>Email:<a href="#"> info@tuinvitacion.online</a></p>
-					</div>
-				</div>
-<!--				<div class="col-sm-3">
+						<!--				<div class="col-sm-3">
 					<div class="widget">
 						<h5 class="widget-title font-alt">Recent Comments</h5>
 						<ul class="icon-list">
@@ -641,8 +438,8 @@ get_header(); ?>
 						</ul>
 					</div>
 </div>-->
+					</div>
+				</div>
 			</div>
-		</div>
-	</div>
-	<hr class="divider-d">
-<?php get_footer(); ?>
+			<hr class="divider-d">
+			<?php get_footer(); ?>
