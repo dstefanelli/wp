@@ -17,8 +17,16 @@
 
 get_header(); ?>
 
-	
-    <?php get_template_part('template-parts/destacada'); // Template categoría destacada ?>
+	<?php //IMAGEN DE CABECERA
+		$arg = array('category_name' => 'destacada' );$destacada = new WP_Query($arg);
+		if ( $destacada-> have_posts() ) {
+			while ( $destacada-> have_posts() ) {
+				$destacada->the_post(); 
+				get_template_part('template-parts/destacada'); // Template categoría destacada
+			} // end while
+			wp_reset_postdata();
+		} // end if
+    ?>
 	
 		<div class="main">
 			<section class="module" id="services">

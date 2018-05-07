@@ -32,10 +32,13 @@
 }
 
 .navbar-custom .navbar-brand {
-	letter-spacing: 4px;
-	font-weight: 400;
-	font-size: 22px;
 	color: #fff;
+	font: 400 36px/20px 'Alex Brush', cursive;
+	text-transform: capitalize;
+}
+
+.navbar-custom .navbar-brand > span {
+	font-size: 18px;
 }
 
 .navbar-custom .nav li > a {

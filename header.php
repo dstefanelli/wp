@@ -34,6 +34,7 @@
 		<meta name="msapplication-TileColor" content="#ffffff">
 		<meta name="msapplication-TileImage" content="assets/images/favicons/ms-icon-144x144.png">
 		<meta name="theme-color" content="#ffffff">
+		<link href="https://fonts.googleapis.com/css?family=Alex+Brush" rel="stylesheet">
 		<?php wp_head(); ?>
 	</head>
 	<body <?php body_class(); ?> data-spy="scroll" data-target=".onpage-navigation" data-offset="60">

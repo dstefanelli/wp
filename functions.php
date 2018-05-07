@@ -216,6 +216,7 @@ function wedding_setup() {
 }
 add_action( 'after_setup_theme', 'wedding_setup' );
 
+
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
  *
@@ -439,6 +440,66 @@ function wedding_content_image_sizes_attr( $sizes, $size ) {
 }
 add_filter( 'wp_calculate_image_sizes', 'wedding_content_image_sizes_attr', 10, 2 );
 
+if ( ! function_exists('custom_post_type_jumbotron') ) {
+
+	// Register Custom Post Type
+	function custom_post_type_jumbotron() {
+
+		$labels = array(
+			'name'                  => _x( 'jumbotrons', 'Post Type General Name', 'text_domain' ),
+			'singular_name'         => _x( 'jumbotron', 'Post Type Singular Name', 'text_domain' ),
+			'menu_name'             => __( 'Jumbotron', 'text_domain' ),
+			'name_admin_bar'        => __( 'Jumbotron', 'text_domain' ),
+			'archives'              => __( 'Archivo de Jumbotron', 'text_domain' ),
+			'attributes'            => __( 'Atributos de Jumbotron', 'text_domain' ),
+			'parent_item_colon'     => __( 'Padre de Jumbotron', 'text_domain' ),
+			'all_items'             => __( 'Todos los Jumbotron', 'text_domain' ),
+			'add_new_item'          => __( 'Agregar nuevo Jumbotron', 'text_domain' ),
+			'add_new'               => __( 'Agregar nuevo', 'text_domain' ),
+			'new_item'              => __( 'Nuevo Jumbotron', 'text_domain' ),
+			'edit_item'             => __( 'Editar Jumbotron', 'text_domain' ),
+			'update_item'           => __( 'Actualizar Jumbotron', 'text_domain' ),
+			'view_item'             => __( 'Ver Jumbotron', 'text_domain' ),
+			'view_items'            => __( 'Ver Jumbotrons', 'text_domain' ),
+			'search_items'          => __( 'Buscar Jumbotron', 'text_domain' ),
+			'not_found'             => __( 'No encontrado', 'text_domain' ),
+			'not_found_in_trash'    => __( 'No encontrado en papelera', 'text_domain' ),
+			'featured_image'        => __( 'Imagen destacada', 'text_domain' ),
+			'set_featured_image'    => __( 'Agregar imagen destacada', 'text_domain' ),
+			'remove_featured_image' => __( 'Remover imagen destacada', 'text_domain' ),
+			'use_featured_image'    => __( 'Usar como imagen destacada', 'text_domain' ),
+			'insert_into_item'      => __( 'Insertar en Jumbotron', 'text_domain' ),
+			'uploaded_to_this_item' => __( 'Subir a este Jumbotron', 'text_domain' ),
+			'items_list'            => __( 'Listado de Jumbotron', 'text_domain' ),
+			'items_list_navigation' => __( 'Navegación de Jumbotron', 'text_domain' ),
+			'filter_items_list'     => __( 'Filtrar Jumbotron', 'text_domain' ),
+		);
+		$args = array(
+			'label'                 => __( 'jumbotron', 'text_domain' ),
+			'description'           => __( 'Imagen destacada de cabecera', 'text_domain' ),
+			'labels'                => $labels,
+			'supports'              => array( 'title', 'editor', 'thumbnail' ),
+			'taxonomies'            => array( 'category', 'post_tag' ),
+			'hierarchical'          => false,
+			'public'                => true,
+			'show_ui'               => true,
+			'show_in_menu'          => true,
+			'menu_position'         => 5,
+			'menu_icon'             => 'dashicons-format-image',
+			'show_in_admin_bar'     => true,
+			'show_in_nav_menus'     => true,
+			'can_export'            => true,
+			'has_archive'           => true,
+			'exclude_from_search'   => false,
+			'publicly_queryable'    => true,
+			'capability_type'       => 'page',
+		);
+		register_post_type( 'jumbotron', $args );
+
+	}
+	add_action( 'init', 'custom_post_type_jumbotron', 0 );
+
+}
 /**
  * Filter the `sizes` value in the header image markup.
  *
