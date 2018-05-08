@@ -18,16 +18,16 @@
 get_header(); ?>
 
 	<?php //IMAGEN DE CABECERA
-		$arg = array('category_name' => 'destacada' );$destacada = new WP_Query($arg);
-		if ( $destacada-> have_posts() ) {
-			while ( $destacada-> have_posts() ) {
-				$destacada->the_post(); 
-				get_template_part('template-parts/destacada'); // Template categoría destacada
+		$arg = array('category_name' => 'destacada' );
+		$outstanding = new WP_Query($arg);
+		if ( $outstanding-> have_posts() ) {
+			while ( $outstanding-> have_posts() ) {
+				$outstanding->the_post(); 
+				get_template_part('template-parts/outstanding'); // Template categoría destacada
 			} // end while
 			wp_reset_postdata();
 		} // end if
     ?>
-	
 		<div class="main">
 			<section class="module" id="services">
 				<div class="container">
@@ -47,7 +47,7 @@ get_header(); ?>
 					<div class="row">
 						<div class="col-sm-6 col-sm-offset-3">
 							<h2 class="module-title font-alt">Características</h2>
-							<div class="module-subtitle font-serif">En solo un <em>Click</em> haz que tus invitados reciban los detalles de tu evento.</div>
+							<div class="module-subtitle font-serif">En solo un <em>Click</em> haz que tus invitados reciban los detalles de tu fiesta.</div>
 						</div>
 					</div>
 					<div class="row">
@@ -97,8 +97,8 @@ get_header(); ?>
 				<div class="container">
 					<div class="row">
 						<div class="col-sm-6 col-sm-offset-3">
-							<h2 class="module-title font-alt">Meet Our Team</h2>
-							<div class="module-subtitle font-serif">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</div>
+							<h2 class="module-title font-alt">Elige tu tema</h2>
+							<div class="module-subtitle font-serif">Tenemos cuatro increibles formatos, elige el que más se ajuste a tu boda!</div>
 						</div>
 					</div>
 					<div class="row">
@@ -112,8 +112,8 @@ get_header(); ?>
 									</div>
 								</div>
 								<div class="team-descr font-alt">
-									<div class="team-name">Jim Stone</div>
-									<div class="team-role">Art Director</div>
+									<div class="team-name">Clásica</div>
+									<!--<div class="team-role">Art Director</div>-->
 								</div>
 							</div>
 						</div>
@@ -127,8 +127,8 @@ get_header(); ?>
 									</div>
 								</div>
 								<div class="team-descr font-alt">
-									<div class="team-name">Andy River</div>
-									<div class="team-role">Creative director</div>
+									<div class="team-name">Natural</div>
+									<!--<div class="team-role">Creative director</div>-->
 								</div>
 							</div>
 						</div>
@@ -142,8 +142,8 @@ get_header(); ?>
 									</div>
 								</div>
 								<div class="team-descr font-alt">
-									<div class="team-name">Adele Snow</div>
-									<div class="team-role">Account manager</div>
+									<div class="team-name">Divertida</div>
+								<!--	<div class="team-role">Account manager</div>-->
 								</div>
 							</div>
 						</div>
@@ -157,8 +157,8 @@ get_header(); ?>
 									</div>
 								</div>
 								<div class="team-descr font-alt">
-									<div class="team-name">Dylan Woods</div>
-									<div class="team-role">Developer</div>
+									<div class="team-name">Ecléctica</div>
+									<!--<div class="team-role">Developer</div>-->
 								</div>
 							</div>
 						</div>
@@ -247,55 +247,55 @@ get_header(); ?>
 				<div class="container">
 					<div class="row">
 						<div class="col-sm-6 col-sm-offset-3">
-							<h2 class="module-title font-alt">Nuestros precios</h2>
-							<div class="module-subtitle font-serif">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</div>
+							<h2 class="module-title font-alt">Nuestros Packs</h2>
+							<div class="module-subtitle font-serif">Eliga entre nuestros tres posibles packs, cada pack agrega distintas funcionalidades.</div>
 						</div>
 					</div>
 					<div class="row multi-columns-row">
 						<div class="col-sm-6 col-md-4 col-lg-4">
 							<div class="price-table font-alt">
-								<h4>Basic</h4>
+								<h4>Plata</h4>
 								<div class="borderline"></div>
-								<p class="price"><span>€</span>29
+								<p class="price"><span>€</span>29.99
 								</p>
 								<ul class="price-details">
-									<li>Free Support</li>
+									<li>100 invitaciones por e-mail</li>
 									<li>15 Demos Included</li>
 									<li>Newsletter</li>
 									<li><span>Working Contact Form</span></li>
 									<li><span>Unlimited Domains</span></li>
-								</ul><a class="btn btn-d btn-round" href="#">Sign Up</a>
+								</ul><a class="btn btn-d btn-round" href="#">Contratar</a>
 							</div>
 						</div>
 						<div class="col-sm-6 col-md-4 col-lg-4">
 							<div class="price-table font-alt best">
-								<h4>Advanced</h4>
-								<p class="small">Best Choice</p>
+								<h4>Oro</h4>
+								<p class="small">Recomendado</p>
 								<div class="borderline"></div>
-								<p class="price"><span>€</span>64
+								<p class="price"><span>€</span>69.99
 								</p>
 								<ul class="price-details">
-									<li>Free Support</li>
+									<li>150 invitaciones por e-mail</li>
 									<li>15 Demos Included</li>
 									<li>Newsletter</li>
 									<li>Working Contact Form</li>
 									<li><span>Unlimited Domains</span></li>
-								</ul><a class="btn btn-d btn-round" href="#">Sign Up</a>
+								</ul><a class="btn btn-d btn-round" href="#">Contratar</a>
 							</div>
 						</div>
 						<div class="col-sm-6 col-md-4 col-lg-4">
 							<div class="price-table font-alt">
-								<h4>Ultimate</h4>
+								<h4>Platino</h4>
 								<div class="borderline"></div>
-								<p class="price"><span>€</span>119
+								<p class="price"><span>€</span>119.99
 								</p>
 								<ul class="price-details">
-									<li>Free Support</li>
+									<li>300 invitaciones por e-mail</li>
 									<li>15 Demos Included</li>
 									<li>Newsletter</li>
 									<li>Working Contact Form</li>
 									<li>Unlimited Domains</li>
-								</ul><a class="btn btn-d btn-round" href="#">Sign Up</a>
+								</ul><a class="btn btn-d btn-round" href="#">Contratar</a>
 							</div>
 						</div>
 					</div>
