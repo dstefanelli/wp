@@ -1,0 +1,9 @@
+.navbar{
+	background: #ffffff;
+}
+.navbar-custom .navbar-brand{
+	color: #333333;
+}
+.navbar-custom .nav li > a{
+	color: #333333;
+}

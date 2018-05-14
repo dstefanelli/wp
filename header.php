@@ -16,7 +16,7 @@
 		<meta charset="<?php bloginfo( 'charset' ); ?>">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Tu Invitación Online</title>
+		<title><?php bloginfo('name'); ?><?php wp_title('|'); ?></title>
 		<link rel="apple-touch-icon" sizes="57x57" href="<?php echo get_stylesheet_directory_uri();?>/favicons/apple-icon-57x57.png">
 		<link rel="apple-touch-icon" sizes="60x60" href="<?php echo get_stylesheet_directory_uri();?>/favicons/apple-icon-60x60.png">
 		<link rel="apple-touch-icon" sizes="72x72" href="<?php echo get_stylesheet_directory_uri();?>/favicons/apple-icon-72x72.png">
@@ -36,17 +36,29 @@
 		<meta name="theme-color" content="#ffffff">
 		<link href="https://fonts.googleapis.com/css?family=Alex+Brush" rel="stylesheet">
 		<?php wp_head(); ?>
+		
 	</head>
-	<body <?php body_class(); ?> data-spy="scroll" data-target=".onpage-navigation" data-offset="60">
+	
+	<?php 
+		if( is_front_page() ):
+			$bodyClasses = '';
+		else:
+			$bodyClasses = '';
+		endif;
+	?>
+	
+	<body <?php body_class($bodyClasses); ?> data-spy="scroll" data-target=".onpage-navigation" data-offset="60">
 		<main>
 			<div class="page-loader">
 				<div class="loader">Loading...</div>
-			</div>
-			<?php if( has_nav_menu('top') ) : ?>
-			
-				<?php get_template_part('template-parts/navigation', 'top'); ?>
-			
-			<?php endif; ?>
+			</div>			
+			<?php
+				if ( is_front_page() ){
+					get_template_part('template-parts/navigation', 'top');
+				} elseif ( is_page_template() ) {
+					get_template_part('template-parts/navigation-template', 'top');
+				} 
+			?>
 
 		
 

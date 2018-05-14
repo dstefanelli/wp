@@ -412,6 +412,13 @@ function wedding_style_script()
 }
 add_action( 'wp_enqueue_scripts', 'wedding_style_script' );
 
+//ESTILOS PARA PAGE TEMPLATE
+function wedding_template_styles() {
+	if ( is_page_template( 'page-silver-pack.php' ) ) {
+		wp_enqueue_style( 'page-template', get_template_directory_uri() . '/assets/css/page-template.css' );
+	}
+}
+add_action( 'wp_enqueue_scripts', 'wedding_template_styles' );
 /**
  * Add custom image sizes attribute to enhance responsive image functionality
  * for content images.
@@ -573,6 +580,8 @@ function wedding_widget_tag_cloud_args( $args ) {
 }
 add_filter( 'widget_tag_cloud_args', 'wedding_widget_tag_cloud_args' );
 
+add_theme_support('custom-background');
+add_theme_support('custom-header-image');
 /**
  * Implement the Custom Header feature.
  *

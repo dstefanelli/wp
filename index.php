@@ -18,15 +18,21 @@
 get_header(); ?>
 
 	<?php //IMAGEN DE CABECERA
-		$arg = array('category_name' => 'destacada' );
-		$outstanding = new WP_Query($arg);
-		if ( $outstanding-> have_posts() ) {
-			while ( $outstanding-> have_posts() ) {
-				$outstanding->the_post(); 
-				get_template_part('template-parts/outstanding'); // Template categoría destacada
-			} // end while
-			wp_reset_postdata();
-		} // end if
+		$arg = array(
+			'type'=>'post',
+			'posts_per_page'=>1,
+			'category_name' => 'destacada'
+		);
+		$outstanding = new WP_Query( $arg );
+
+		if ( $outstanding-> have_posts() ) :
+			while ( $outstanding-> have_posts() ): $outstanding->the_post(); ?> 
+				<?php get_template_part('template-parts/outstanding', get_post_format()); ?>
+			<?php endwhile;
+		endif;
+		
+		wp_reset_postdata();
+		
     ?>
 		<div class="main">
 			<section class="module" id="services">
